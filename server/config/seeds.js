@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Provider, Category } = require('../models');
+const { User, Provider, Category, Availability } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -8,22 +8,24 @@ db.once('open', async () => {
     { name: 'Walking' }
   ]);
 
-  const availability = await Category.insertMany([
-    { time: 'Mon 8-10AM' },
-    { time: 'Mon 5-7PM' },
-    { time: 'Tue 8-10AM' },
-    { time: 'Tue 5-7PM' },
-    { time: 'Wed 8-10AM' },
-    { time: 'Wed 5-7PM' },
-    { time: 'Thu 8-10AM' },
-    { time: 'Thu 5-7PM' },
-    { time: 'Fri 8-10AM' },
-    { time: 'Fri 5-7PM' },
-    { time: 'Sat 8-10AM' },
-    { time: 'Sat 5-7PM' }
-  ]);
-
   console.log('categories seeded');
+
+  const availability = [
+    'Mon 8-10AM',
+    'Mon 5-7PM',
+    'Tue 8-10AM',
+    'Tue 5-7PM',
+    'Wed 8-10AM',
+    'Wed 5-7PM',
+    'Thu 8-10AM',
+    'Thu 5-7PM',
+    'Fri 8-10AM',
+    'Fri 5-7PM',
+    'Sat 8-10AM',
+    'Sat 5-7PM'
+  ];
+
+  console.log('availability seeded');
 
   await Provider.deleteMany();
 
@@ -35,11 +37,11 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 20.00,
-      quantity: [availability[1]._id, availability[2]._id, availability[5]._id, availability[6]._id, availability[8]._id]
+      quantity: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     }
   ]);
 
-  console.log('products seeded');
+  console.log('providers seeded');
 
   await User.deleteMany();
 
@@ -50,7 +52,7 @@ db.once('open', async () => {
     password: 'password12345',
     orders: [
       {
-        products: [products[0]._id, products[0]._id, products[1]._id]
+        providers: [providers[0]._id, providers[0]._id, providers[0]._id]
       }
     ]
   });
