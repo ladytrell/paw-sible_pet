@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const availabilitySchema = new Schema({
-  name: {
+  time: {
     type: String,
     required: true,
     trim: true
