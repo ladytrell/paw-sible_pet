@@ -11,7 +11,7 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-await Availability.deleteMany();
+  await Availability.deleteMany();
   const availability =  await Availability.insertMany([
     { time: 'Mon 8-10AM' },
     { time: 'Mon 5-7PM' },
@@ -27,17 +27,11 @@ await Availability.deleteMany();
     { time: 'Sat 5-7PM' }
   ]);
 
-  const prepareAvailability = [];
-  availability.forEach(day => {
-    prepareAvailability.push({ name: day });
-  });
-
-  const allAvailabilities = await Availability.insertMany(prepareAvailability);
-
-
   console.log('availability seeded');
-  await Provider.deleteMany();
+  console.log('availability', availability[1]);
+  console.log('availability', availability[1].time);
 
+  await Provider.deleteMany();
   const providers = await Provider.insertMany([
     {
       name: 'Mary',
@@ -46,7 +40,7 @@ await Availability.deleteMany();
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 20.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1]._id, availability[2]._id, availability[5]._id, availability[6]._id, availability[8]._id]
     },
     {
       name: 'Jessie',
@@ -55,7 +49,7 @@ await Availability.deleteMany();
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 15.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1]._id, availability[2]._id, availability[5]._id, availability[6]._id, availability[8]._id]
     },
     {
       name: 'Anna',
@@ -64,7 +58,7 @@ await Availability.deleteMany();
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 21.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1]._id, availability[2]._id, availability[5]._id, availability[6]._id, availability[8]._id]
     },
     {
       name: 'Katie',
@@ -73,7 +67,7 @@ await Availability.deleteMany();
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 19.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1]._id, availability[2]._id, availability[5]._id, availability[6]._id, availability[8]._id]
     },
     {
       name: 'Amanda',
@@ -82,7 +76,7 @@ await Availability.deleteMany();
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 22.50,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id]
+      availability: [availability[1]._id, availability[2]._id]
     },
   ]);
 
