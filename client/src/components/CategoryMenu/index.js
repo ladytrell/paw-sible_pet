@@ -5,7 +5,7 @@ import { QUERY_CATEGORIES } from '../../utils/queries';import { useStoreContext 
 
 import { idbPromise } from '../../utils/helpers';
 
-function CategoryMenu({}) {
+function CategoryMenu() {
   const [state, dispatch] = useStoreContext();
 
   const { categories } = state;
@@ -31,7 +31,7 @@ function CategoryMenu({}) {
         });
       });
     }  
-  }, [categoryData, dispatch]);
+  },  [categoryData, loading, dispatch]);
 
   const handleClick = id => {
     dispatch({

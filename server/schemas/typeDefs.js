@@ -6,17 +6,12 @@ const typeDefs = gql`
     name: String
   }
 
-  type Availability {
-    _id: ID
-    time: String
-  }
-
   type Provider {
     _id: ID
     name: String
     description: String
     image: String
-    availability: [Availability]
+    availability: [String]
     price: Float
     category: Category
   }
@@ -53,8 +48,7 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    availability: [Availability]
-    providers(availability: [ID], category: ID, name: String): [Provider]
+    providers(category: ID, name: String): [Provider]
     provider(_id: ID!): Provider
     user: User
     order(_id: ID!): Order
