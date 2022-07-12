@@ -11,22 +11,21 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  Availability.deleteMany();
-
-  const availability = [
-    'Mon 8-10AM',
-    'Mon 5-7PM',
-    'Tue 8-10AM',
-    'Tue 5-7PM',
-    'Wed 8-10AM',
-    'Wed 5-7PM',
-    'Thu 8-10AM',
-    'Thu 5-7PM',
-    'Fri 8-10AM',
-    'Fri 5-7PM',
-    'Sat 8-10AM',
-    'Sat 5-7PM'
-  ];
+await Availability.deleteMany();
+  const availability =  await Availability.insertMany([
+    { time: 'Mon 8-10AM' },
+    { time: 'Mon 5-7PM' },
+    { time: 'Tue 8-10AM' },
+    { time: 'Tue 5-7PM' },
+    { time: 'Wed 8-10AM' },
+    { time: 'Wed 5-7PM' },
+    { time: 'Thu 8-10AM' },
+    { time: 'Thu 5-7PM' },
+    { time: 'Fri 8-10AM' },
+    { time: 'Fri 5-7PM' },
+    { time: 'Sat 8-10AM' },
+    { time: 'Sat 5-7PM' }
+  ]);
 
   const prepareAvailability = [];
   availability.forEach(day => {
@@ -37,7 +36,6 @@ db.once('open', async () => {
 
 
   console.log('availability seeded');
-
   await Provider.deleteMany();
 
   const providers = await Provider.insertMany([

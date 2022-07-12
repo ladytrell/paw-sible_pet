@@ -6,12 +6,17 @@ const typeDefs = gql`
     name: String
   }
 
+  type Availability {
+    _id: ID
+    time: String
+  }
+
   type Provider {
     _id: ID
     name: String
     description: String
     image: String
-    quantity: Int
+    availability: [Availability]
     price: Float
     category: Category
   }
@@ -20,6 +25,13 @@ const typeDefs = gql`
     _id: ID
     purchaseDate: String
     providers: [Provider]
+  }
+
+  type PetProfile {
+    _id: ID
+    name: String
+    breed: String
+    age: Float
   }
 
   type User {
@@ -41,6 +53,7 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
+    availability: [Availability]
     providers(category: ID, name: String): [Provider]
     provider(_id: ID!): Provider
     user: User
@@ -52,7 +65,7 @@ const typeDefs = gql`
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(providers: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProvider(_id: ID!, quantity: Int!): Provider
+    updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
   }
 `;

@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const PetProfile = require('./PetProfile');
+const Provider = require('./Provider');
 const Order = require('./Order');
 
 const userSchema = new Schema({
@@ -25,6 +27,8 @@ const userSchema = new Schema({
     required: true,
     minlength: 5
   },
+  pets: [PetProfile.schema],
+  favorites: [Provider.schema],
   orders: [Order.schema]
 });
 
