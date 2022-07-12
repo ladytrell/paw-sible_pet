@@ -1,16 +1,17 @@
 const db = require('./connection');
-const { User, Provider, Category, Availability } = require('../models');
+const { User, Provider, Category, Availability, Order } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Walking' }
+    { name: 'Walking' },
+    { name: 'Sitting' },
   ]);
 
   console.log('categories seeded');
 
-  await Availability.deleteMany();
+await Availability.deleteMany();
   const availability =  await Availability.insertMany([
     { time: 'Mon 8-10AM' },
     { time: 'Mon 5-7PM' },
@@ -26,6 +27,14 @@ db.once('open', async () => {
     { time: 'Sat 5-7PM' }
   ]);
 
+  const prepareAvailability = [];
+  availability.forEach(day => {
+    prepareAvailability.push({ name: day });
+  });
+
+  const allAvailabilities = await Availability.insertMany(prepareAvailability);
+
+
   console.log('availability seeded');
   await Provider.deleteMany();
 
@@ -37,8 +46,44 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 20.00,
-      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
-    }
+      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+    },
+    {
+      name: 'Jessie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 15.00,
+      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+    },
+    {
+      name: 'Anna',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 21.00,
+      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+    },
+    {
+      name: 'Katie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 19.00,
+      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+    },
+    {
+      name: 'Amanda',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 22.50,
+      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id]
+    },
   ]);
 
   console.log('providers seeded');
@@ -65,6 +110,31 @@ db.once('open', async () => {
   });
 
   console.log('users seeded');
+
+  await Order.deleteMany();
+
+  await Order.create({
+    purchaseDate: new Date(),
+    products: [
+      providers[0]._id, providers[0]._id
+    ]
+  });
+
+  await Order.create({
+    purchaseDate: new Date(),
+    products: [
+      providers[0]._id, providers[1]._id, providers[2]._id
+    ]
+  });
+
+  await Order.create({
+    purchaseDate: new Date(),
+    products: [
+      providers[0]._id
+    ]
+  });
+
+  console.log('order seeded');
 
   process.exit();
 });
