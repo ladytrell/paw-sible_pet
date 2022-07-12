@@ -54,11 +54,11 @@ const typeDefs = gql`
   type Query {
     categories: [Category]
     availability: [Availability]
-    providers(category: ID, name: String): [Provider]
+    providers(availability: [ID], category: ID, name: String): [Provider]
     provider(_id: ID!): Provider
     user: User
     order(_id: ID!): Order
-    checkout(providers: [ID]!): Checkout  
+    checkout(providers: [ID]!): Checkout 
   }
 
   type Mutation {
