@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Provider, Category, Order, Availability } = require('../models');
+const { User, Provider, Category, Order, Availability, PetProfile } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -100,12 +100,20 @@ const resolvers = {
       return { session: session.id };      
     }    
   },
-  Mutation: {
+  Mutation: {    
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
+    },
+     
+    addPet: async (parent, args) => {
+      const pet = await PetProfile.create(args);
+
+      await User.findByIdAndUpdate(context.user._id, { $push: { pets: pet } });
+
+      return pet;
     },
     addOrder: async (parent, { providers }, context) => {
       console.log(context);
