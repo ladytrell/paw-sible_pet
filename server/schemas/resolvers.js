@@ -8,9 +8,6 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    availability: async () => {
-      return await Availability.find();
-    },
     providers: async (parent, { category, name }) => {
       const params = {};
 
@@ -125,11 +122,6 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
-    },
-    updateProvider: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
-
-      return await Provider.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

@@ -1,32 +1,33 @@
 const db = require('./connection');
-const { User, Provider, Category, Availability } = require('../models');
+const { User, Provider, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
 
   const categories = await Category.insertMany([
-    { name: 'Walking' }
+    { name: 'Walking' },
+    { name: 'Sitting' },
   ]);
 
   console.log('categories seeded');
 
-  await Availability.deleteMany();
-  const availability =  await Availability.insertMany([
-    { time: 'Mon 8-10AM' },
-    { time: 'Mon 5-7PM' },
-    { time: 'Tue 8-10AM' },
-    { time: 'Tue 5-7PM' },
-    { time: 'Wed 8-10AM' },
-    { time: 'Wed 5-7PM' },
-    { time: 'Thu 8-10AM' },
-    { time: 'Thu 5-7PM' },
-    { time: 'Fri 8-10AM' },
-    { time: 'Fri 5-7PM' },
-    { time: 'Sat 8-10AM' },
-    { time: 'Sat 5-7PM' }
-  ]);
+  
+  const availability =  [
+    'Mon 8-10AM',
+    'Mon 5-7PM',
+    'Tue 8-10AM',
+    'Tue 5-7PM',
+    'Wed 8-10AM',
+    'Wed 5-7PM',
+    'Thu 8-10AM',
+    'Thu 5-7PM',
+    'Fri 8-10AM',
+    'Fri 5-7PM',
+    'Sat 8-10AM',
+    'Sat 5-7PM'
+  ];
 
-  console.log('availability seeded');
+  //console.log('availability seeded');
   await Provider.deleteMany();
 
   const providers = await Provider.insertMany([
@@ -38,7 +39,44 @@ db.once('open', async () => {
       category: categories[0]._id,
       price: 20.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
-    }
+    },
+    
+    {
+      name: 'Jessie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 15.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Anna',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 21.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Katie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 19.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Amanda',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[0]._id,
+      price: 22.50,
+      availability: [availability[1], availability[2]]
+    },
   ]);
 
   console.log('providers seeded');
@@ -52,7 +90,7 @@ db.once('open', async () => {
     password: 'password12345',
     orders: [
       {
-        providers: [providers[0]._id, providers[0]._id, providers[0]._id]
+        providers: [providers[0]._id, providers[3]._id, providers[4]._id]
       }
     ]
   });
