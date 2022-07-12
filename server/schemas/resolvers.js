@@ -31,10 +31,12 @@ const resolvers = {
     },
     user: async (parent, args, context) => {
       if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: 'orders.providers',
-          populate: 'category'
-        });
+        const user = await User.findById(context.user._id).populate(
+          {
+            path: 'orders.providers',
+            populate: 'category'
+          }
+        );
 
         user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
 
@@ -100,20 +102,28 @@ const resolvers = {
       return { session: session.id };      
     }    
   },
-  Mutation: {    
+  Mutation: {  
+    //Add User to database
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
 
       return { token, user };
     },
-     
+    //Add Pet Profile to User account    
     addPet: async (parent, args) => {
       const pet = await PetProfile.create(args);
 
-      await User.findByIdAndUpdate(context.user._id, { $push: { pets: pet } });
+      await User.findByIdAndUpdate(context.user._id, { $push: { pets: pet } },  { new: true } );
 
       return pet;
+    },
+    //Add Provider to User Favorites list   
+    addFavorite: async (parent, args) => {
+      console.log(context);
+      const user = await User.findByIdAndUpdate(context.user._id, { $push: { favorites: args} },  { new: true } );
+
+      return user.favorites;
     },
     addOrder: async (parent, { providers }, context) => {
       console.log(context);

@@ -39,6 +39,8 @@ const typeDefs = gql`
     firstName: String
     lastName: String
     email: String
+    pets: [PetProfile]
+    favorites: [Provider]
     orders: [Order]
   }
 
@@ -62,6 +64,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addFavorite(providers: [ID]!): [Provider]
     addPet(name: String!, breed: String!, age: String!): PetProfile
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(providers: [ID]!): Order
