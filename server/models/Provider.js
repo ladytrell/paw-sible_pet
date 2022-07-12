@@ -21,8 +21,7 @@ const providerSchema = new Schema({
   },
   availability: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Availability'
+      type: String
     }
   ],
   category: {

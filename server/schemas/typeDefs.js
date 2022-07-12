@@ -6,17 +6,12 @@ const typeDefs = gql`
     name: String
   }
 
-  type Availability {
-    _id: ID
-    time: String
-  }
-
   type Provider {
     _id: ID
     name: String
     description: String
     image: String
-    availability: [Availability]
+    availability: [String]
     price: Float
     category: Category
   }
@@ -53,8 +48,15 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
+<<<<<<< HEAD
     availability: [Availability]
     providers(availability: [ID], category: ID, name: String): [Provider]
+||||||| 1f758b6
+    availability: [Availability]
+    providers(category: ID, name: String): [Provider]
+=======
+    providers(category: ID, name: String): [Provider]
+>>>>>>> feature/provider
     provider(_id: ID!): Provider
     user: User
     order(_id: ID!): Order
