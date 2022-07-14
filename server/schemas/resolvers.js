@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Provider, Category, Order, Availability, PetProfile } = require('../models');
+const { User, Provider, Category, Order, PetProfile } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -7,9 +7,6 @@ const resolvers = {
   Query: {
     categories: async () => {
       return await Category.find();
-    },
-    availability: async () => {
-      return await Availability.find();
     },
     providers: async (parent, { category, name }) => {
       const params = {};
@@ -113,9 +110,9 @@ const resolvers = {
     //Add Pet Profile to User account    
     addPet: async (parent, args) => {
       const pet = await PetProfile.create(args);
-
+      //let context= {user:{_id: "62cf6cbc7a77be4550429bce"}};
+     
       await User.findByIdAndUpdate(context.user._id, { $push: { pets: pet } },  { new: true } );
-
       return pet;
     },
     //Add Provider to User Favorites list   
@@ -143,11 +140,6 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
-    },
-    updateProvider: async (parent, { _id, quantity }) => {
-      const decrement = Math.abs(quantity) * -1;
-
-      return await Provider.findByIdAndUpdate(_id, { $inc: { quantity: decrement } }, { new: true });
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });

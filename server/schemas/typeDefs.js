@@ -65,7 +65,7 @@ const typeDefs = gql`
 
   type Mutation {
     addFavorite(providers: [ID]!): [Provider]
-    addPet(name: String!, breed: String!, age: String!): PetProfile
+    addPet(name: String!, breed: String!, age: Float!): PetProfile
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(providers: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
