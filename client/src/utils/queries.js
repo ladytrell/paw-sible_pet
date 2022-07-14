@@ -68,3 +68,35 @@ export const QUERY_CHECKOUT = gql`
     }
   }
 `;
+
+export const QUERY_PROVIDER = gql`
+  query provider($id: ID!) {
+    provider(_id: $id) {
+      _id
+      name
+      description
+      image
+      price
+      availability
+      category {
+        name
+      }
+    }
+  }
+`;
+
+export const QUERY_PROVIDERS = gql`
+  query providers($name: String) {
+    providers(name: $name) {
+      _id
+      name
+      description
+      image
+      price
+      availability
+      category {
+        name
+      }
+    }
+  }
+`;
