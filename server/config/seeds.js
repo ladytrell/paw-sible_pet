@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Provider, Category, Availability, Order } = require('../models');
+const { User, Provider, Category } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -11,9 +11,8 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  Availability.deleteMany();
-
-  const availability = [
+  
+  const availability =  [
     'Mon 8-10AM',
     'Mon 5-7PM',
     'Tue 8-10AM',
@@ -28,18 +27,10 @@ db.once('open', async () => {
     'Sat 5-7PM'
   ];
 
-  const prepareAvailability = [];
-  availability.forEach(day => {
-    prepareAvailability.push({ name: day });
-  });
-
-  const allAvailabilities = await Availability.insertMany(prepareAvailability);
-
-
-  console.log('availability seeded');
-
+  //console.log('availability seeded');
   await Provider.deleteMany();
 
+  await Provider.deleteMany();
   const providers = await Provider.insertMany([
     {
       name: 'Mary',
@@ -48,8 +39,9 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 20.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
+    
     {
       name: 'Jessie',
       description:
@@ -57,7 +49,7 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 15.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
     {
       name: 'Anna',
@@ -66,7 +58,7 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 21.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
     {
       name: 'Katie',
@@ -75,7 +67,7 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 19.00,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id, allAvailabilities[5]._id, allAvailabilities[6]._id, allAvailabilities[8]._id]
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
     {
       name: 'Amanda',
@@ -84,7 +76,7 @@ db.once('open', async () => {
       image: 'cookie-tin.jpg',
       category: categories[0]._id,
       price: 22.50,
-      availability: [allAvailabilities[1]._id, allAvailabilities[2]._id]
+      availability: [availability[1], availability[2]]
     },
   ]);
 
@@ -99,7 +91,7 @@ db.once('open', async () => {
     password: 'password12345',
     orders: [
       {
-        providers: [providers[0]._id, providers[0]._id, providers[0]._id]
+        providers: [providers[0]._id, providers[3]._id, providers[4]._id]
       }
     ]
   });

@@ -11,7 +11,7 @@ const typeDefs = gql`
     name: String
     description: String
     image: String
-    quantity: Int
+    availability: [String]
     price: Float
     category: Category
   }
@@ -22,11 +22,20 @@ const typeDefs = gql`
     providers: [Provider]
   }
 
+  type PetProfile {
+    _id: ID
+    name: String
+    breed: String
+    age: Float
+  }
+
   type User {
     _id: ID
     firstName: String
     lastName: String
     email: String
+    pets: [PetProfile]
+    favorites: [Provider]
     orders: [Order]
   }
 
@@ -45,14 +54,16 @@ const typeDefs = gql`
     provider(_id: ID!): Provider
     user: User
     order(_id: ID!): Order
-    checkout(providers: [ID]!): Checkout  
+    checkout(providers: [ID]!): Checkout 
   }
 
   type Mutation {
+    addFavorite(providers: [ID]!): [Provider]
+    addPet(name: String!, breed: String!, age: Float!): PetProfile
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(providers: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User
-    updateProvider(_id: ID!, quantity: Int!): Provider
+    updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
   }
 `;
