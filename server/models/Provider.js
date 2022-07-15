@@ -20,7 +20,7 @@ const providerSchema = new Schema({
     required: true,
     min: 0.99
   },
-  quantity: {    
+  availability: {
     type: [String],
     required: true
   },
