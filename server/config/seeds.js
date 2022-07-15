@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Provider, Category } = require('../models');
+const { User, Provider, Category, Order } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -11,8 +11,7 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  
-  const availability =  [
+  const availability = [
     'Mon 8-10AM',
     'Mon 5-7PM',
     'Tue 8-10AM',
@@ -27,10 +26,8 @@ db.once('open', async () => {
     'Sat 5-7PM'
   ];
 
-  //console.log('availability seeded');
   await Provider.deleteMany();
 
-  await Provider.deleteMany();
   const providers = await Provider.insertMany([
     {
       name: 'Mary',
@@ -41,7 +38,6 @@ db.once('open', async () => {
       price: 20.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
-    
     {
       name: 'Jessie',
       description:
@@ -91,7 +87,7 @@ db.once('open', async () => {
     password: 'password12345',
     orders: [
       {
-        providers: [providers[0]._id, providers[3]._id, providers[4]._id]
+        providers: [providers[0]._id, providers[0]._id, providers[0]._id]
       }
     ]
   });
