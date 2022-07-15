@@ -15,6 +15,7 @@ import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import { StoreProvider } from "./utils/GlobalState";
 import ReservationHistory from './pages/ReservationHistory';
+import SingleProvider from './pages/SingleProvider';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -62,6 +63,10 @@ function App() {
               <Route 
                 path="/providers/:id" 
                 element={<Detail />}
+              />
+              <Route 
+                path="/provider/:id" 
+                element={<SingleProvider />}
               />
             </Routes>
           </StoreProvider>
