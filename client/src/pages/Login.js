@@ -31,11 +31,11 @@ function Login(props) {
 
   return (
     <div className="container my-1">
-      <div class="banner">
+      <div className="banner">
         <h3>PAW SERVICES</h3>
         <p>Dog Walkers Who Treat Your Dog Like Family!</p>
       </div>
-      <div class="login">
+      <div className="login">
         <Link to="/signup">← Go to Signup</Link>
 
         <h2>Login</h2>

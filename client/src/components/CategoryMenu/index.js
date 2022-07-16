@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { UPDATE_CATEGORIES, UPDATE_CURRENT_CATEGORY } from '../../utils/actions';
 import { useQuery } from '@apollo/client';
-import { QUERY_CATEGORIES } from '../../utils/queries'; import { useStoreContext } from "../../utils/GlobalState";
+import { QUERY_CATEGORIES } from '../../utils/queries'; 
+import { useStoreContext } from "../../utils/GlobalState";
 
 import { idbPromise } from '../../utils/helpers';
 
@@ -24,6 +25,7 @@ function CategoryMenu() {
         idbPromise('categories', 'put', category);
       });
     } else if (!loading) {
+      //Update InexDB
       idbPromise('categories', 'get').then(categories => {
         dispatch({
           type: UPDATE_CATEGORIES,
@@ -41,7 +43,7 @@ function CategoryMenu() {
   };
 
   return (
-    <div class="category">
+    <div className="category">
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
         <button

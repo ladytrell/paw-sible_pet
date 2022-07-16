@@ -23,7 +23,8 @@ db.once('open', async () => {
     'Fri 8-10AM',
     'Fri 5-7PM',
     'Sat 8-10AM',
-    'Sat 5-7PM'
+    'Sat 5-7PM',
+    'Friday - Sunday'
   ];
 
   await Provider.deleteMany();
@@ -74,6 +75,15 @@ db.once('open', async () => {
       price: 22.50,
       availability: [availability[1], availability[2]]
     },
+    {
+      name: 'Jamie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[1]._id,
+      price: 80.00,
+      availability: [availability[12]]
+    },
   ]);
 
   console.log('providers seeded');
@@ -97,6 +107,13 @@ db.once('open', async () => {
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345'
+  });
+
+  await User.create({
+    firstName: 'Antrell',
+    lastName: 'Eady',
+    email: 'antrell@mail.com',
+    password: 'password'
   });
 
   console.log('users seeded');

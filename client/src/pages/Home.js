@@ -15,11 +15,15 @@ const Home = () => {
     <div className="container">
       <CategoryMenu />
       <Cart />
-      <ProviderList 
-        providers={providers}
-      />
+      <ProviderList />
     </div>
   );
 };
 
 export default Home;
+
+/*
+<ProviderList 
+ providers={providers}
+ />
+ */
