@@ -1,4 +1,4 @@
-import React, { useEffect }  from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useStoreContext } from '../../utils/GlobalState';
@@ -23,15 +23,15 @@ const ProviderList = () => {
                 providers: data.providers
             });
         }
-        }, [data, loading, dispatch]);
+    }, [data, loading, dispatch]);
 
-        function filterProviders() {
-            if (!currentCategory) {
-                return state.providers;
-            }
-
-            return state.providers.filter(provider => provider.category._id === currentCategory);
+    function filterProviders() {
+        if (!currentCategory) {
+            return state.providers;
         }
+
+        return state.providers.filter(provider => provider.category._id === currentCategory);
+    }
 
     //If no providers are present display message
     if (!state.providers.length) {
@@ -49,13 +49,16 @@ const ProviderList = () => {
                             style={{ fontWeight: 700 }}
                             className="text-light"
                         >
-                        {provider.name}
+                            {provider.name}
                         </Link>
                     </p>
-                    <div className="card-body">
-                        <p>Rate: ${provider.price}</p>
-                        <p>Category: {provider.category.name}</p>
-                        <p>Availability: {provider.availability}</p>
+                    <div className="card-body provider-card">
+                        <p><span className="font-weight-bolder">Rate: </span>${provider.price}</p>
+                        <p><span className="font-weight-bolder">Category: </span>{provider.category.name}</p>
+                        <p><span className="font-weight-bolder">Availability:</span></p>
+                        <ul>{provider.availability.map((day, key) => {
+                            return <li key={key}>{day}</li>
+                        })}</ul>
                     </div>
                 </div>
             ))}
