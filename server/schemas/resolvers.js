@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Provider, Category, Order, PetProfile } = require('../models');
+const { User, Provider, Category, Order, PetProfile, Reservation } = require('../models');
 const { signToken } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -41,6 +41,9 @@ const resolvers = {
       }
 
       throw new AuthenticationError('Not logged in');
+    },
+    reservation: async () => {
+      return await Reservation.find();
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {

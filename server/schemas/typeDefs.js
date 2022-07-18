@@ -16,10 +16,17 @@ const typeDefs = gql`
     category: Category
   }
 
+  type Reservation {
+    _id: ID
+    service: String
+    provider: Provider
+    timeSlot: [String]
+  }
+
   type Order {
     _id: ID
     purchaseDate: String
-    providers: [Provider]
+    reservations: [Reservation]
   }
 
   type PetProfile {
@@ -55,6 +62,7 @@ const typeDefs = gql`
     user: User
     order(_id: ID!): Order
     checkout(providers: [ID]!): Checkout 
+    reservation: [Reservation]
   }
 
   type Mutation {
@@ -65,6 +73,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
+    addReservation(provider: [ID]!, timeSlot: String!): Reservation
   }
 `;
 
