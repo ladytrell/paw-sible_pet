@@ -17,11 +17,11 @@ const reservationSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Provider'
     },
-    timeSlot:[
-      {
-        type: String
-      }
-    ]
+    timeSlot:
+    {
+      type: String,
+      required: true
+    }
 });
 
 const Reservation = mongoose.model('Reservation', reservationSchema);

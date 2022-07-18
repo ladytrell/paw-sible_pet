@@ -137,6 +137,16 @@ const resolvers = {
 
       throw new AuthenticationError('Not logged in');
     },
+    
+    addReservation: async (parent, args) => {
+      console.log('addReservation args', args);
+      //const reservation = new Reservation( args.provider.category, args.provider, args.timeSlot );
+      const reservation = await Reservation.create(args);
+
+      //await Provider.findByIdAndUpdate(args.provider._id, { $pop: { availability: args.timeSlot } });
+
+      return reservation;
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });

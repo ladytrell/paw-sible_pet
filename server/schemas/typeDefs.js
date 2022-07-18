@@ -20,7 +20,7 @@ const typeDefs = gql`
     _id: ID
     service: String
     provider: Provider
-    timeSlot: [String]
+    timeSlot: String
   }
 
   type Order {
@@ -73,7 +73,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
-    addReservation(provider: [ID]!, timeSlot: String!): Reservation
+    addReservation(category: ID, provider: [ID]!, timeSlot: String!): Reservation
   }
 `;
 
