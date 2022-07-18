@@ -32,7 +32,7 @@ function Login(props) {
   return (
     <div className="container my-1">
       <div className="banner">
-        <h3>PAW SERVICES</h3>
+        <h3>PAW-Sible SERVICES</h3>
         <p>Dog Walkers Who Treat Your Dog Like Family!</p>
       </div>
       <div className="login">

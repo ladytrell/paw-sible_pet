@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+
 :root {
   --primary: #232F3E;
   --secondary: #F3A847;
@@ -28,6 +31,8 @@ body {
   color: var(--dark);
   background: url('./assets/images/dog-walker-takes-photos-of-dogs.png') no-repeat;
   background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
 }
 
 h1,
@@ -221,21 +226,67 @@ input:focus {
 .banner,
 .category {
   background-color: white;
-  opacity: 0.8;
+  opacity: 0.6;
   padding: 10px;
 }
 
-.login {
-  position: absolute;
-  right: 0px;
-  width: 500px;
-  top: 50%;
+
+@media screen and (min-width: 1024px) {
+  .login {
+    position: absolute;
+    right: 0px;
+    width: 500px;
+    top: 50%;
+  }
+
+  .banner {
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    width: 500px;
+    top: 50%;
+    font-family: 'Open Sans', sans-serif !important;
+  }
 }
 
-.banner {
-  text-align: center;
-  position: absolute;
-  left: 0px;
-  width: 500px;
-  top: 50%;
+@media screen and (max-width: 900px) {
+  .login {
+    position: absolute;
+    right: 0px;
+    width: 100%;
+    top: 50%;
+  }
+
+  .banner {
+    text-align: center;
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    top: 20%;
+    font-family: 'Open Sans', sans-serif !important;
+  }
+
+  .toplinks>a {
+    color: black;
+    background-color: white;
+    border-style: solid;
+    padding: 5px;
+    border-radius: 5px;
+  }
+}
+
+.banner>h3 {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.provider-card {
+  text-align: left;
+}
+
+.card {
+  opacity: 0.8;
+}
+
+.font-weight-bolder {
+  font-weight: bolder;
 }
