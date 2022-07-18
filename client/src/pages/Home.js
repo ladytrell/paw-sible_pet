@@ -7,9 +7,17 @@ const Home = () => {
 
   return (
     <div className="container">
-      <ProviderList/>
+      <CategoryMenu />
+      <Cart />
+      <ProviderList />
     </div>
   );
 };
 
 export default Home;
+
+/*
+<ProviderList 
+ providers={providers}
+ />
+ */

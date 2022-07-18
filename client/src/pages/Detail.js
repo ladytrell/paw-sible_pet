@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import { useStoreContext } from "../utils/GlobalState";
-import { QUERY_PRODUCTS } from '../utils/queries';
+import { QUERY_PROVIDERS } from '../utils/queries';
 import spinner from '../assets/spinner.gif';
 import Cart from '../components/Cart';
 
@@ -13,7 +13,7 @@ import {
   REMOVE_FROM_CART,
   UPDATE_CART_QUANTITY,
   ADD_TO_CART,
-  UPDATE_PRODUCTS,
+  UPDATE_PROVIDERS,
 } from '../utils/actions';
 
 function Detail() {
@@ -22,31 +22,31 @@ function Detail() {
   
   const [currentProvider, setCurrentProvider] = useState({})
   
-  const { loading, data } = useQuery(QUERY_PRODUCTS);
+  const { loading, data } = useQuery(QUERY_PROVIDERS);
   
   const { providers, cart } = state;
   
   useEffect(() => {
     // already in global store
     if (providers.length) {
-      setCurrentProvider(providers.find(product => product._id === id));
+      setCurrentProvider(providers.find(provider => provider._id === id));
     } 
     // retrieved from server
     else if (data) {
       dispatch({
-        type: UPDATE_PRODUCTS,
+        type: UPDATE_PROVIDERS,
         providers: data.providers
       });
   
-      data.providers.forEach((product) => {
-        idbPromise('providers', 'put', product);
+      data.providers.forEach((provider) => {
+        idbPromise('providers', 'put', provider);
       });
     }
     // get cache from idb
     else if (!loading) {
       idbPromise('providers', 'get').then((indexedProviders) => {
         dispatch({
-          type: UPDATE_PRODUCTS,
+          type: UPDATE_PROVIDERS,
           providers: indexedProviders
         });
       });
@@ -71,9 +71,9 @@ function Detail() {
     } else {
       dispatch({
         type: ADD_TO_CART,
-        product: { ...currentProvider, purchaseQuantity: 1 }
+        provider: { ...currentProvider, purchaseQuantity: 1 }
       });
-      // if product isn't in the cart yet, add it to the current shopping cart in IndexedDB
+      // if provider isn't in the cart yet, add it to the current shopping cart in IndexedDB
       idbPromise('cart', 'put', { ...currentProvider, purchaseQuantity: 1 });
     }
   };

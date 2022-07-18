@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Provider, Category } = require('../models');
+const { User, Provider, Category, Order } = require('../models');
 
 db.once('open', async () => {
   await Category.deleteMany();
@@ -11,8 +11,7 @@ db.once('open', async () => {
 
   console.log('categories seeded');
 
-  
-  const availability =  [
+  const availability = [
     'Mon 8-10AM',
     'Mon 5-7PM',
     'Tue 8-10AM',
@@ -24,13 +23,12 @@ db.once('open', async () => {
     'Fri 8-10AM',
     'Fri 5-7PM',
     'Sat 8-10AM',
-    'Sat 5-7PM'
+    'Sat 5-7PM',
+    'Friday - Sunday'
   ];
 
-  //console.log('availability seeded');
   await Provider.deleteMany();
 
-  await Provider.deleteMany();
   const providers = await Provider.insertMany([
     {
       name: 'Mary',
@@ -41,7 +39,6 @@ db.once('open', async () => {
       price: 20.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
     },
-    
     {
       name: 'Jessie',
       description:
@@ -78,6 +75,15 @@ db.once('open', async () => {
       price: 22.50,
       availability: [availability[1], availability[2]]
     },
+    {
+      name: 'Jamie',
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      image: 'cookie-tin.jpg',
+      category: categories[1]._id,
+      price: 80.00,
+      availability: [availability[12]]
+    },
   ]);
 
   console.log('providers seeded');
@@ -91,7 +97,7 @@ db.once('open', async () => {
     password: 'password12345',
     orders: [
       {
-        providers: [providers[0]._id, providers[3]._id, providers[4]._id]
+        providers: [providers[0]._id, providers[0]._id, providers[0]._id]
       }
     ]
   });
@@ -106,6 +112,13 @@ db.once('open', async () => {
         providers: [providers[0]._id, providers[3]._id, providers[4]._id]
       }
     ]
+  });
+
+  await User.create({
+    firstName: 'Antrell',
+    lastName: 'Eady',
+    email: 'antrell@mail.com',
+    password: 'password'
   });
 
   console.log('users seeded');
