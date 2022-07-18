@@ -3,20 +3,11 @@ import CategoryMenu from "../components/CategoryMenu";
 import Cart from '../components/Cart';
 import ProviderList from "../components/ProviderList";
 
-// import { useQuery } from "@apollo/client";
-// import { QUERY_PROVIDERS } from "../utils/queries";
-
-
-
 const Home = () => {
-  // const { data } = useQuery(QUERY_PROVIDERS);
-  // const providers = data?.providers || [];
 
   return (
     <div className="container">
-      <ProviderList 
-        // providers={providers}
-      />
+      <ProviderList/>
     </div>
   );
 };
