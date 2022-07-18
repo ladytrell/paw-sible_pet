@@ -143,12 +143,13 @@ const resolvers = {
       console.log('addReservation args', args);
       //const reservation = new Reservation( args.provider.category, args.provider, args.timeSlot );
       const reservation = await Reservation.create(args);
+      console.log(reservation)
+      await Provider.findByIdAndUpdate(args.provider, {
+         $pull: { availability: args.timeSlot } 
+        });
 
-      //await Provider.findByIdAndUpdate(args.provider._id, { $pop: { availability: args.timeSlot } });
-
-      return reservation.populate(
-        'service', 'provider', 
-      );
+      return await reservation.populate(
+        'service').populate('provider').execPopulate();
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
