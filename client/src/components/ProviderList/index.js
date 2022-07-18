@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const ProviderList = ({ providers }) => {
+import { useQuery } from "@apollo/client";
+import { QUERY_PROVIDERS } from "../../utils/queries";
+
+const ProviderList = () => {
+    const { data } = useQuery(QUERY_PROVIDERS);
+    const providers = data?.providers || [];
+    
     if (!providers.length) {
         return <h3>No Providers Found.</h3>
     }

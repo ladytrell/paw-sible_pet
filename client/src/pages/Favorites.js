@@ -20,12 +20,6 @@ const Favorites = (props) => {
     const user = data.me || data.user || {};
     console.log('user', user)
 
-    // const { id: providerId } = useParams();
-    // const { providerData } = useQuery(QUERY_PROVIDER, {
-    //     variables: { id: providerId }
-    // });
-    // const provider = providerData?.provider || {};
-
     // const handleDeleteFavorite = async(event) => {
     //     try {
     //         await deleteFavorite({
@@ -46,21 +40,6 @@ const Favorites = (props) => {
             </h4>
           );
     }
-
-
-    /*if (Auth.loggedIn() && Auth.getProfile().data._id === userParam) {
-        return <Navigate to="/favorites:id" />;
-    }
-    
-    if (loading) {
-        return <div>Loading...</div>;
-    } else {
-        return (
-          <h4>
-            You need to be logged in to see this. Use the navigation links above.
-          </h4>
-        );
-      }*/
 
     if (!user.favorites) {
             return <h3>No Favorites Found.</h3>
