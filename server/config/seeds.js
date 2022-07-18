@@ -107,6 +107,11 @@ db.once('open', async () => {
     lastName: 'Holt',
     email: 'eholt@testmail.com',
     password: 'password12345'
+    favorites: [
+      {
+        providers: [providers[0]._id, providers[3]._id, providers[4]._id]
+      }
+    ]
   });
 
   await User.create({
