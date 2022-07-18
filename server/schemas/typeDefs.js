@@ -18,7 +18,7 @@ const typeDefs = gql`
 
   type Reservation {
     _id: ID
-    service: String
+    service: Category
     provider: Provider
     timeSlot: String
   }
@@ -73,7 +73,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
-    addReservation(category: ID, provider: [ID]!, timeSlot: String!): Reservation
+    addReservation(service: ID, provider: [ID]!, timeSlot: String!): Reservation
   }
 `;
 

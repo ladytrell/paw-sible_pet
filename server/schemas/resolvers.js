@@ -43,7 +43,8 @@ const resolvers = {
       throw new AuthenticationError('Not logged in');
     },
     reservation: async () => {
-      return await Reservation.find();
+      return await Reservation.find().populate(
+        'service').populate('provider');
     },
     order: async (parent, { _id }, context) => {
       if (context.user) {
@@ -145,7 +146,9 @@ const resolvers = {
 
       //await Provider.findByIdAndUpdate(args.provider._id, { $pop: { availability: args.timeSlot } });
 
-      return reservation;
+      return reservation.populate(
+        'service', 'provider', 
+      );
     },
     updateUser: async (parent, args, context) => {
       if (context.user) {
