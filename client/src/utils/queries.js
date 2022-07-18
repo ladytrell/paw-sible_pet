@@ -41,10 +41,69 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  {
-    user {
+  query getUser($_id: ID!){
+    user(_id: $_id) {
+      _id
       firstName
       lastName
+      email
+      pets {
+        _id
+        age
+        breed
+      }
+      favorites {
+        _id
+        name
+        description
+        price
+        #quantity
+        image
+        availability
+        category {
+          name
+        }
+      }
+      orders {
+        _id
+        purchaseDate
+        #products {
+         # _id
+         # name
+         # description
+         # price
+         # quantity
+         # image
+        #}
+      }
+    }
+  }
+`;
+
+export const QUERY_ME = gql`
+  {
+    me {
+      _id
+      firstName
+      lastName
+      email
+      pets {
+        _id
+        age
+        breed
+      }
+      favorites {
+        _id
+        name
+        description
+        price
+        quantity
+        image
+        availability
+        category {
+          name
+        }
+      }
       orders {
         _id
         purchaseDate

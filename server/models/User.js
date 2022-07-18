@@ -28,7 +28,10 @@ const userSchema = new Schema({
     minlength: 5
   },
   pets: [PetProfile.schema],
-  favorites: [Provider.schema],
+  favorites: [{
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: 'Provider'
+  }],
   orders: [Order.schema]
 });
 

@@ -49,3 +49,18 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+export const ADD_FAVORITE = gql`
+    mutation addFavorite($id: ID!){
+      addFavorite(id: $id) {
+        _id
+      }
+    }
+  `;
+
+export const REMOVE_FAVORITE = gql`
+  mutation deleteFavorite($id: ID!) {
+    deleteFavorite(id: $id) {
+      _id
+    }
+  }`;
