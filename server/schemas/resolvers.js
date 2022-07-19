@@ -204,6 +204,25 @@ const resolvers = {
         console.log(err.message);
       }
     },
+    removeReservation: async (parent, args) => {
+      console.log('removeReservation args', args);
+      //Add Try Catch
+      try{     
+        const reservation = await Reservation.findById(args);
+        console.log(reservation)    
+        const provider = await Provider.findById(reservation.provider);        
+        console.log(provider)
+        
+        await Provider.findByIdAndUpdate(provider._id, {
+          $push: { availability: reservation.timeSlot } 
+          });
+       
+        return await Reservation.findByIdAndDelete(args);        
+      }
+      catch(err){
+        console.log(err.message);
+      }
+    },
     updateUser: async (parent, args, context) => {
       if (context.user) {
         return await User.findByIdAndUpdate(context.user._id, args, { new: true });
