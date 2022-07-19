@@ -60,7 +60,7 @@ db.once('open', async () => {
     {
       name: 'Katie',
       description:
-        'My name is Katie. My love for pets is what sparked me to enter the wonderful world of pet sitting. I have been a dog walker/dog sitter and have been boarding dogs for 5+ years. I understand the importance of trusting someone to care for your "kids". I grew up with a household of furry friends! Many people thought my family was crazy for having so many pets! But I couldnt imagine my life without them. They bring so much joy and happiness to my familys life. Seeing their little faces everyday just puts a smile on my face! I am a stay at home momma. I am married with 5 kiddos ranging from 21 to 1 yr old. We are a very busy household. We have 1 dog named Tiffany and 2 cats named Kikki and Howey. They bring so much joy and happiness to our life! We live in a 4 bedroom house with a backyard and pool with plenty of space for them to romp and play! We can't wait to meet you and your pets :)',
+        'My name is Katie. My love for pets is what sparked me to enter the wonderful world of pet sitting. I have been a dog walker/dog sitter and have been boarding dogs for 5+ years. I understand the importance of trusting someone to care for your "kids". I grew up with a household of furry friends! Many people thought my family was crazy for having so many pets! But I couldnt imagine my life without them. They bring so much joy and happiness to my familys life. Seeing their little faces everyday just puts a smile on my face! I am a stay at home momma. I am married with 5 kiddos ranging from 21 to 1 yr old. We are a very busy household. We have 1 dog named Tiffany and 2 cats named Kikki and Howey. They bring so much joy and happiness to our life! We live in a 4 bedroom house with a backyard and pool with plenty of space for them to romp and play! We cannot wait to meet you and your pets :)',
       image: '/client/src/assets/images/profile/Katie.jpg',
       category: categories[0]._id,
       price: 19.00,
@@ -87,7 +87,7 @@ db.once('open', async () => {
     {
       name: 'Ben',
       description:
-        'It all started on my first day of kindergarten when my grandfather arrived at school to pick me up. After getting in the car, he produced my first puppy Mitzi, a miniature Sheltie. She fit in the palm of his hand. I have never been the same since!! My childhood pets included horses chickens ducks goats and numerous cats and dogs. Today I share my home with four rescue dogs -- Happy the Rottweiler Marley the Labrachow SweetPea the Boxer/Pit mix and Daisy the Havanese. Recently Daisy rescued an abandoned four-week-old kitty. Ironically Daisy found her in the same spot my wife found Daisy. She's a Tabby, and we named her Kit-Kat. The five of them bring us so much joy, and I could not imagine life without them!!',
+        'It all started on my first day of kindergarten when my grandfather arrived at school to pick me up. After getting in the car, he produced my first puppy Mitzi, a miniature Sheltie. She fit in the palm of his hand. I have never been the same since!! My childhood pets included horses chickens ducks goats and numerous cats and dogs. Today I share my home with four rescue dogs -- Happy the Rottweiler Marley the Labrachow SweetPea the Boxer/Pit mix and Daisy the Havanese. Recently Daisy rescued an abandoned four-week-old kitty. Ironically Daisy found her in the same spot my wife found Daisy. Shes a Tabby, and we named her Kit-Kat. The five of them bring us so much joy, and I could not imagine life without them!!',
       image: '/client/src/assets/images/profile/Ben.jpg',
       category: categories[0]._id,
       price: 20.00,
@@ -132,7 +132,7 @@ db.once('open', async () => {
     {
       name: 'Amy',
       description:
-        'Hi! My name is Amy (the friendly voice you’ll hear when you call our office) and I just love being a part of Good Dog! Coaching & Pet Care. I am a retired RN and recent empty nester, so I was thrilled for the chance pet sitter lawrenceville, gato work with Terie and all of these awesome pet sitters! I have had animals all my life and currently have 3 dogs- Roxie, Colby & Lilly, a cat Periwinkle. And my Grandpuppy Diesel makes frequent visits! I love talking to all of our amazing clients about their pet sitting & training needs! It is my pleasure to get your services set up so that your fur babies can experience outstanding care while you are away!!',
+        'Hi! My name is Amy the friendly voice youll hear when you call our office and I just love being a part of Good Dog! Coaching & Pet Care. I am a retired RN and recent empty nester, so I was thrilled for the chance pet sitter lawrenceville, gato work with Terie and all of these awesome pet sitters! I have had animals all my life and currently have 3 dogs- Roxie, Colby & Lilly, a cat Periwinkle. And my Grandpuppy Diesel makes frequent visits! I love talking to all of our amazing clients about their pet sitting & training needs! It is my pleasure to get your services set up so that your fur babies can experience outstanding care while you are away!!',
       image: '/client/src/assets/images/profile/Amy.jpg',
       category: categories[1]._id,
       price: 80.00,
