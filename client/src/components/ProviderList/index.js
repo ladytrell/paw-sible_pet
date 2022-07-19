@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PROVIDERS } from '../../utils/actions';
 import { QUERY_PROVIDERS } from '../../utils/queries';
