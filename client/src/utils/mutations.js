@@ -64,3 +64,22 @@ export const REMOVE_FAVORITE = gql`
       _id
     }
   }`;
+
+export const ADD_RESERVATION = gql`
+  mutation addReservation(
+    provider: $provider, 
+    timeSlot: $timeSlot, 
+    service: $service) {
+    _id
+    service {
+      _id
+      name
+    }
+    provider {
+      _id
+      name
+      price
+    }
+    timeSlot
+  }
+`;
