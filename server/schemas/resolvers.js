@@ -246,15 +246,15 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    },
-   /* User: {
-      favorites: async user => {
-        console.log('user.favorites', user.favorites)
-        return User.populate(user, {path: 'favorites'})
-          .then(user => user.favorites)
-      }
-    }*/
-  }
+    }
+  },
+  /*User: {
+    favorites: async user => {
+      console.log('user.favorites', user.favorites)
+      return User.populate(user, {path: 'favorites'})
+        .then(user => user.favorites)
+    }
+  }*/
 };
 
 module.exports = resolvers;

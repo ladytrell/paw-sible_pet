@@ -5,8 +5,6 @@ import { QUERY_PROVIDER } from "../utils/queries";
 import { ADD_FAVORITE } from "../utils/mutations";
 import Auth from '../utils/auth';
 
-const image = 
-
 const SingleProvider = (props) => {
     const { id: providerId } = useParams();
     console.log({providerId});
@@ -41,7 +39,7 @@ const SingleProvider = (props) => {
 
     const handleAddCart = async (event) => {
         event.preventDefault();
-        try {
+       /* try {
             const mutationResponse = await addReservation({
             variables: {
                 timeSlot: formState.timeSlot,
@@ -58,7 +56,7 @@ const SingleProvider = (props) => {
                 idbPromise('cart', 'put', { ...reservation});
         } catch(err){
             console.log(err.message);
-        }
+        }*/
     };
 
     if (loading) {
@@ -92,6 +90,8 @@ const SingleProvider = (props) => {
                         <button onClick={() => handleAddCart(provider._id)}>Add to Cart</button>
                     </form>
                     <img src={provider.image} alt={`${provider.name}`} />
+                    {provider.availability}
+                    <img src={`/images/profile/${provider.image}`} alt={`${provider.name}`} />
                     <button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>
