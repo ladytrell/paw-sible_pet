@@ -5,42 +5,78 @@ const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
+    me: async (parent, args, context) => {
+      if (context.user) {
+        const userData = await User.findOne({ _id: context.user._id })
+          .select('-__v -password')
+          .populate('favorites')
+          .populate('pets')
+          .populate('orders');
+        
+        return userData;
+      }
+
+      throw new AuthenticationError('Not logged in.');
+    },
+
     categories: async () => {
       return await Category.find();
     },
-    providers: async (parent, { category, name }) => {
-      const params = {};
+    // providers: async (parent, { category, name }) => {
+    //   const params = {};
 
-      if (category) {
-        params.category = category;
-      }
+    //   if (category) {
+    //     params.category = category;
+    //   }
 
-      if (name) {
-        params.name = {
-          $regex: name
-        };
-      }
+    //   if (name) {
+    //     params.name = {
+    //       $regex: name
+    //     };
+    //   }
 
-      return await Provider.find(params).populate('category');
-    },
+    //   return await Provider.find(params).populate('category');
+    // },
+    // provider: async (parent, { _id }) => {
+    //   return await Provider.findById(_id).populate('category');
+    // },
+    // user: async (parent, args, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate(
+    //       {
+    //         path: 'orders.providers',
+    //         populate: 'category'
+    //       }
+    //     );
+
+    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
+
+    //     return user;
+    //   }
+
+    //   // throw new AuthenticationError('Not logged in');
+    // },
     provider: async (parent, { _id }) => {
-      return await Provider.findById(_id).populate('category');
+      return Provider.findById(_id)
+        .populate('category');
     },
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate(
-          {
-            path: 'orders.providers',
-            populate: 'category'
-          }
-        );
-
-        user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-        return user;
-      }
-
-      throw new AuthenticationError('Not logged in');
+    providers: async () => {
+      return Provider.find()
+        .populate('category');
+    },
+    user: async (parent, { _id }) => {
+      return User.findById(_id)
+        .select('-__v -password')
+        .populate('favorites')
+        .populate('pets')
+        .populate('orders');
+    },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('favorites')
+        .populate('pets')
+        .populate('orders');
     },
     reservation: async () => {
       return await Reservation.find().populate(
@@ -120,11 +156,18 @@ const resolvers = {
       return pet;
     },
     //Add Provider to User Favorites list   
-    addFavorite: async (parent, args) => {
-      console.log(context);
-      const user = await User.findByIdAndUpdate(context.user._id, { $push: { favorites: args} },  { new: true } );
-
-      return user.favorites;
+    addFavorite: async (parent, { id }, context) => {
+      console.log({id});
+      console.log({context})
+      if (context.user) {
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { favorites: id } },
+          { new: true, runValidators: true }
+        );
+        
+        return updatedUser;
+      }
     },
     addOrder: async (parent, { providers }, context) => {
       console.log(context);
@@ -142,18 +185,20 @@ const resolvers = {
     addReservation: async (parent, args) => {
       console.log('addReservation args', args);
       //Add Try Catch
-      try{
-        const reservation = await Reservation.create(args);
-        console.log(reservation)
-
+      try{        
         const provider = await Provider.findById(args.provider);        
         console.log(provider)
-        /*await Provider.findByIdAndUpdate(args.provider, {
-          $pull: { availability: args.timeSlot } 
-          });*/
-
-        return await reservation.populate(
-          'service').populate('provider').execPopulate();
+        if(provider.availability.includes(args.timeSlot)){
+          await Provider.findByIdAndUpdate(provider._id, {
+            $pull: { availability: args.timeSlot } 
+            });
+          const reservation = await Reservation.create(args);
+          console.log(reservation)
+          return await reservation.populate(
+            'service').populate('provider').execPopulate();
+        } else {
+          console.log("Time slot not available");
+        }
       }
       catch(err){
         console.log(err.message);
@@ -182,7 +227,14 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+   /* User: {
+      favorites: async user => {
+        console.log('user.favorites', user.favorites)
+        return User.populate(user, {path: 'favorites'})
+          .then(user => user.favorites)
+      }
+    }*/
   }
 };
 
