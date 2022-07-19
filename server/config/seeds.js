@@ -43,7 +43,7 @@ db.once('open', async () => {
       name: 'Jessie',
       description:
         'I have grown up with animals my entire life. Starting out with cats, dogs, turtles and fish, I also took interest in exotic animals such as snakes, birds and frogs. Caring for animals has been my life-long ambition.   In addition to caring for my personal pets, I volunteer at the Wildlife Waystation, located in Sylmar. At the Wildlife Waystation, I help care for animals such as big cats, bears, wolves, coyotes, birds of prey, primates and several other animals. I also plan to pursue my interest in animal behavior and get my dog training certification. I also hope to study Zoology. Currently, my animal family includes one kitty, two dogs, one hypo Brookes king snake one normal red tail boa one albino red tail boa one albino motley red tail boa one hypo jungle red tail boa two green tree pythons (aru and merauke locality) and a Brazilian rainbow boa.',
-      image: '/client/src/assets/images/profile/Jessie.jpg',
+      image: './assets/images/profile/Jessie.jpg',
       category: categories[0]._id,
       price: 15.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
