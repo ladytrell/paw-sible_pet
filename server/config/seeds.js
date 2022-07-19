@@ -74,8 +74,10 @@ db.once('open', async () => {
     {
       name: 'Katie',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: '/client/src/assets/images/profile/',
+        'My name is Katie. My love for pets is what sparked me to enter the wonderful world of pet sitting. I have been a dog walker/dog sitter and have been boarding dogs for 5+ years. I understand the importance of trusting someone to care for your "kids". I grew up with a household of furry friends! Many people thought my family was crazy for having so many pets! But I couldn't imagine my life without them. They bring so much joy and happiness to my family's life. Seeing their little faces everyday just puts a smile on my face!
+
+        I am a stay at home momma. I am married with 5 kiddos ranging from 21 to 1 yr old. We are a very busy household. We have 1 dog named Tiffany and 2 cats named Kikki and Howey. They bring so much joy and happiness to our life! We live in a 4 bedroom house with a backyard and pool with plenty of space for them to romp and play! We can't wait to meet you and your pets :)',
+      image: '/client/src/assets/images/profile/Katie.jpg',
       category: categories[0]._id,
       price: 19.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
@@ -83,8 +85,10 @@ db.once('open', async () => {
     {
       name: 'Amanda',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: '/client/src/assets/images/profile/',
+        'I have 3 years experience pet sitting for friends and family as well as two years experience working at a pet hotel before beginning work as a pet sitter.   I love making new pet buddies, and want to ensure they are as happy as can be. Prior training classes have taught me how to interact with pets that may be a bit timid, or shy with new individuals. Pets are great companions and I look forward to meeting many new buddies!
+
+        I am also an artist. In my spare time, I love to work on art projects! I am currently working on illustrating a children's book about a dog!',
+      image: '/client/src/assets/images/profile/Amanda.jpg',
       category: categories[0]._id,
       price: 22.50,
       availability: [availability[1], availability[2]]
