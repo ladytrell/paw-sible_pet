@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 
 import {
-    UPDATE_PRODUCTS,
+    UPDATE_PROVIDERS,
     UPDATE_CATEGORIES,
     UPDATE_CURRENT_CATEGORY,
     ADD_TO_CART,
@@ -14,11 +14,11 @@ import {
   
 export const reducer = (state, action) => {
     switch (action.type) {
-      // if action type value is the value of `UPDATE_PRODUCTS`, return a new state object with an updated products array
-      case UPDATE_PRODUCTS:
+      // if action type value is the value of `UPDATE_PROVIDERS`, return a new state object with an updated providers array
+      case UPDATE_PROVIDERS:
         return {
           ...state,
-          products: [...action.products]
+          providers: [...action.providers]
         };
       // if action type value is the value of `UPDATE_CATEGORIES`, return a new state object with an updated categories array
       case UPDATE_CATEGORIES:
@@ -37,16 +37,16 @@ export const reducer = (state, action) => {
         return {
           ...state,
           cartOpen: true,
-          cart: [...state.cart, action.product]
+          cart: [...state.cart, action.provider]
         };
-      case ADD_MULTIPLE_TO_CART:
+/*      case ADD_MULTIPLE_TO_CART:
         return {
           ...state,
-          cart: [...state.cart, ...action.products],
+          cart: [...state.cart, ...action.providers],
         };
       case REMOVE_FROM_CART:
-        let newState = state.cart.filter(product => {
-          return product._id !== action._id;
+        let newState = state.cart.filter(provider => {
+          return provider._id !== action._id;
         });
       
         return {
@@ -58,11 +58,11 @@ export const reducer = (state, action) => {
         return {
           ...state,
           cartOpen: true,
-          cart: state.cart.map(product => {
-            if (action._id === product._id) {
-              product.purchaseQuantity = action.purchaseQuantity;
+          cart: state.cart.map(provider => {
+            if (action._id === provider._id) {
+              provider.purchaseQuantity = action.purchaseQuantity;
             }
-            return product;
+            return provider;
           })
       };
       case CLEAR_CART:
@@ -70,7 +70,7 @@ export const reducer = (state, action) => {
           ...state,
           cartOpen: false,
           cart: []
-        };
+        };*/
       case TOGGLE_CART:
         return {
           ...state,

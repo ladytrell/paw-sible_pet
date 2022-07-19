@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const { Schema } = mongoose;
 
 const providerSchema = new Schema({
@@ -20,10 +19,11 @@ const providerSchema = new Schema({
     required: true,
     min: 0.99
   },
-  quantity: {    
-    type: [String],
-    required: true
-  },
+  availability: [
+    {
+      type: String
+    }
+  ],
   category: {
     type: Schema.Types.ObjectId,
     ref: 'Category',
