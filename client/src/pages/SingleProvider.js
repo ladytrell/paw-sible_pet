@@ -5,6 +5,8 @@ import { QUERY_PROVIDER } from "../utils/queries";
 import { ADD_FAVORITE } from "../utils/mutations";
 import Auth from '../utils/auth';
 
+const image = 
+
 const SingleProvider = (props) => {
     const { id: providerId } = useParams();
     console.log({providerId});
@@ -39,21 +41,25 @@ const SingleProvider = (props) => {
 
     const handleAddCart = async (event) => {
         event.preventDefault();
-        /*const mutationResponse = await addUser({
-          variables: {
-            timeSlot: formState.timeSlot,
-            service: 
-          }
+        try {
+            const mutationResponse = await addReservation({
+            variables: {
+                timeSlot: formState.timeSlot,
+                service: provider.category,
+                provider: provider
+            }})
+
+        const reservation = mutationResponse.data.addReservation.reservation;
+            
             dispatch({
                 type: ADD_TO_CART,
-                product: { ...currentProduct, purchaseQuantity: 1 },
-              });
-              idbPromise('cart', 'put', { ...currentProduct, purchaseQuantity: 1 });
-            }
-        };*/
-        //const token = mutationResponse.data.addUser.token;
-        //Auth.login(token);
-      };
+                reservation: { ...reservation},
+                });
+                idbPromise('cart', 'put', { ...reservation});
+        } catch(err){
+            console.log(err.message);
+        }
+    };
 
     if (loading) {
         return <div>Loading...</div>
@@ -69,6 +75,7 @@ const SingleProvider = (props) => {
                     </span>
                 </p>
                 <div className="card-body">
+                    
                     <p>{provider.description}</p>
                     <p>Rate: ${provider.price}</p>
                     <p>Category: {provider.category.name}</p>
