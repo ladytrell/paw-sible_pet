@@ -34,7 +34,7 @@ db.once('open', async () => {
       name: 'Mary',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[0]._id,
       price: 20.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
@@ -43,7 +43,7 @@ db.once('open', async () => {
       name: 'Jessie',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[0]._id,
       price: 15.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
@@ -52,7 +52,7 @@ db.once('open', async () => {
       name: 'Anna',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[0]._id,
       price: 21.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
@@ -61,7 +61,7 @@ db.once('open', async () => {
       name: 'Katie',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[0]._id,
       price: 19.00,
       availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
@@ -70,7 +70,7 @@ db.once('open', async () => {
       name: 'Amanda',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[0]._id,
       price: 22.50,
       availability: [availability[1], availability[2]]
@@ -79,7 +79,7 @@ db.once('open', async () => {
       name: 'Jamie',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: 'cookie-tin.jpg',
+      image: '',
       category: categories[1]._id,
       price: 80.00,
       availability: [availability[12]]
@@ -106,7 +106,7 @@ db.once('open', async () => {
     firstName: 'Elijah',
     lastName: 'Holt',
     email: 'eholt@testmail.com',
-    password: 'password12345'
+    password: 'password12345',
     favorites: [
       {
         providers: [providers[0]._id, providers[3]._id, providers[4]._id]

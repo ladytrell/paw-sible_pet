@@ -46,7 +46,6 @@ const typeDefs = gql`
     orders: [Order]
   }
 
-
   type Checkout {
     session: ID
   }  

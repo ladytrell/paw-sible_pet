@@ -12,7 +12,7 @@ const ProviderList = () => {
     const [state, dispatch] = useStoreContext();
 
     const { currentCategory } = state;
-    //Reload the <div> with queried aata
+    //Reload the <div> with queried data
     const { loading, data } = useQuery(QUERY_PROVIDERS);
 
     useEffect(() => {
@@ -39,7 +39,7 @@ const ProviderList = () => {
 
     return (
         <div>
-            {/*Filtier list by category if selected*/}
+            {/*Filter list by category if selected*/}
             {filterProviders().map((provider) => (
                 <div key={provider._id} className="card mb-3">
                     <p className="card-header">

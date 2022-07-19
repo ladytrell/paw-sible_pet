@@ -9,14 +9,13 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Home from './pages/Home';
-import Detail from './pages/Detail';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Favorites from './pages/Favorites';
 import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
-import ReservationHistory from './pages/ReservationHistory';
+//import ReservationHistory from './pages/ReservationHistory';
 
 
 const httpLink = createHttpLink({
@@ -58,14 +57,10 @@ function App() {
                 path="/signup" 
                 element={<Signup />} 
               />
-              <Route 
+              {/*<Route 
                 path="/orderHistory" 
                 element={<ReservationHistory />} 
-              />
-              <Route 
-                path="/providers/:id" 
-                element={<Detail />}
-              />
+              />*/}
               <Route 
                 path="/provider/:id" 
                 element={<SingleProvider />}
