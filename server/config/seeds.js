@@ -35,7 +35,7 @@ db.once('open', async () => {
       description:
         'Ever since I can remember, I have always been around and loved animals. My Grandma was very influential in teaching me to love and care for them and how to read their body language. I started pet sitting when I was in elementary school, when our neighbors would go on vacation I would care for their cat and fish. I have had many beloved pets growing up, including; cats, dogs, guinea pigs, rabbits, fish, parakeets, lizards, hamsters, and a mouse. Currently, I have a previously feral, calico cat named Baby who is in the above picture with me, a beta fish, african dwarf frog, nerite snail, and a goldfish.
 
-        I have taken a veterinary science course, where I studied animal anatomy and worked with and cared for the class pets as well. I also worked as a volunteer with Cats In Need, a non-profit no kill organization that works with Petsmart, to get cats into forever homes. I have an Associates Degree, and I am currently in school to get a Bachelors Degree in Biology, with a focus on Zoology. My goal is to study and work directly with wild animals in order to preserve them.',
+        I have taken a veterinary science course where I studied animal anatomy and worked with and cared for the schools pets. I was also a volunteer for Cats In Need a non-profit no kill organization that works with Petsmart to get cats into forever homes. I have an Associates Degree and I am currently in school to get a Bachelors Degree in Biology with a focus on Zoology. My goal is to study and work directly with wild animals in order to preserve them.',
       image: '/client/src/assets/images/profile/Mary.jpg',
       category: categories[0]._id,
       price: 20.00,
@@ -101,6 +101,72 @@ db.once('open', async () => {
         I worked as a vet assistant at an animal hospital for four years and pet sat many times for our clients. In total, I have four years of pet sitting experience. I graduated from Mt.Sac with an Associates in Veterinary Technology and have experience handling animals, administering medications, injections, and fluids.
         
         I consider myself a foodie and love to travel. If I am not trying out new foods or playing with my cats, I am practicing Krav Maga which is a form of self defense Martial Arts.',
+      image: '/client/src/assets/images/profile/Jamie.jpg',
+      category: categories[1]._id,
+      price: 80.00,
+      availability: [availability[12]]
+    },
+    {
+      name: 'Ben',
+      description:
+        'It all started on my first day of kindergarten when my grandfather arrived at school to pick me up. After getting in the car, he produced my first puppy Mitzi, a miniature Sheltie. She fit in the palm of his hand. I have never been the same since!!
+
+        My childhood pets included horses, chickens, ducks, a goat, as well as numerous cats and dogs.
+        
+        Today I share my home with four rescue dogs -- Happy the Rottweiler, Marley the Labrachow, Swee'Pea the Boxer/Pit mix, and Daisy the Havanese. Recently, Daisy rescued an abandoned four-week-old kitty. Ironically, Daisy found her in the same spot my wife found Daisy. She's a Tabby, and we named her Kit-Kat. The five of them bring us so much joy, and I could not imagine life without them!!',
+      image: '/client/src/assets/images/profile/Ben.jpg',
+      category: categories[0]._id,
+      price: 20.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Brooke',
+      description:
+        'I love animals! In addition to pet sitting, I also work at a groom shop. I have 3 dogs and a cat of my own and they’re my furry little children. I also love spending time with my grandchildren. They mean the world to me! I hope I get the chance to meet and care for your furry kids!',
+      image: '/client/src/assets/images/profile/Brooke.jpg',
+      category: categories[0]._id,
+      price: 15.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Chalo',
+      description:
+        'My name is Chalo, I'm 26 years old and this is my 9-year-old boxer Alice who is a rescue.
+
+        I started working with animals when I was 12 years old at San Gabriel humane society as a volunteer. Ever since I was a little girl, animals have always been my passion. Growing up I had everything from fish to bunnies! I graduated Animal Behavioral College in 2012 and went on to work as a bather for PetSmart. I soon got promoted to a certified pet stylist in 2013. Since then I also taught for West Coast Grooming Academy not only teaching grooming but basic health, first aid, nutrition and breed history to students. Friends and family are always asking me to pet sit for them since I've been around animals and have worked in the animal field most my life! I am happy to watch after your babies while you are away! ',
+      image: '/client/src/assets/images/profile/Chalo.jpg',
+      category: categories[0]._id,
+      price: 21.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Charles',
+      description:
+        'I've been Pet sitting with Best Buddies for about a year now. I have a pet tortoise named Turtle and a Yorkie named Bentley. I'm currently attending Cal Poly Pomona studying Electrical Engineering.',
+      image: '/client/src/assets/images/profile/Charles.jpg',
+      category: categories[0]._id,
+      price: 19.00,
+      availability: [availability[1], availability[2], availability[5], availability[6], availability[8]]
+    },
+    {
+      name: 'Krystal',
+      description:
+        'Hello, there my name is Krystal. My experience with animals is personal and professional. I have helped house sit and pet sit for my fathers clients for many years since I was about 9 years old, I took care of pets that could not hear, were blind and as well as complete healthy and happy ones. My personal experience with animals dates back to early childhood. My first pets were a double yellow headed parrot, two giant tortoises, two chickens and a rooster.  As I got older I adopted hamsters, birds, reptiles, fish and rats, you name it I had. Currently I have a female Maltese her name is Jasmine nicked name is Gorda; a bearded dragon and also female, who's name is Elizabeth a small dwarf tortoise his name is Felimon and a tank of fish. I love animals small and large different species... I enjoy spending time with all.  I am a graduate of Platt College I graduated with a BA in paralegal studies.
+
+        My hobbies include going to the gym reading drives to the beach working on my own business and my dads. Spending quality time with my family and pets. ', 
+      image: '/client/src/assets/images/profile/Amanda.jpg',
+      category: categories[0]._id,
+      price: 22.50,
+      availability: [availability[1], availability[2]]
+    },
+    {
+      name: 'Jamie',
+      description:
+        'Ive had a passion for animals since I was a little girl. Growing up my family always had dogs and the one who really impacted my life was a German Shepherd named Samuel. He was my best friend and was so protective and sweet. He was the reason I became interested in working with animals. A few years ago, I found a three month old kitten in my backyard and I instantly became a cat lady. We named her Bobby and a few months later, we rescued another kitten named Nala.
+
+        I worked at an animal hospital for four years and pet sat many times for our clients. In total I have four years of pet sitting experience. I graduated from Mt Sac with an Associates in Veterinary Technology and have experience handling animals administering medications injections and fluids.
+        
+        I consider myself a foodie and love to travel. If I am not trying out new foods or playing with my cats. I am practicing Krav Maga which is a form of self defense Martial Arts.',
       image: '/client/src/assets/images/profile/Jamie.jpg',
       category: categories[1]._id,
       price: 80.00,
