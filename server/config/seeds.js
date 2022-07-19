@@ -96,8 +96,12 @@ db.once('open', async () => {
     {
       name: 'Jamie',
       description:
-        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      image: '/client/src/assets/images/profile/',
+        'I've had a passion for animals since I was a little girl. Growing up, my family always had dogs and the one who really impacted my life was a German Shepherd named Samuel. He was my best friend and was so protective and sweet. He was the reason I became interested in working with animals. A few years ago, I found a three month old kitten in my backyard and I instantly became a cat lady. We named her Bobby and a few months later, we rescued another kitten named Nala.
+
+        I worked as a vet assistant at an animal hospital for four years and pet sat many times for our clients. In total, I have four years of pet sitting experience. I graduated from Mt.Sac with an Associates in Veterinary Technology and have experience handling animals, administering medications, injections, and fluids.
+        
+        I consider myself a foodie and love to travel. If I am not trying out new foods or playing with my cats, I am practicing Krav Maga which is a form of self defense Martial Arts.',
+      image: '/client/src/assets/images/profile/Jamie.jpg',
       category: categories[1]._id,
       price: 80.00,
       availability: [availability[12]]
