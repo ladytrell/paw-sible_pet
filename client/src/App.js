@@ -14,6 +14,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
 import Favorites from './pages/Favorites';
+import ProviderForm from './pages/ProviderForm';
 import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import ReservationHistory from './pages/ReservationHistory';
@@ -73,6 +74,10 @@ function App() {
               <Route 
                 path="/favorites/:id" 
                 element={<Favorites />}
+              />
+              <Route 
+                path="/addlisting" 
+                element={<ProviderForm />}
               />
             </Routes>
           </StoreProvider>

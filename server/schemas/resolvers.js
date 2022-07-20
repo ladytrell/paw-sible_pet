@@ -143,6 +143,13 @@ const resolvers = {
 
       return { token, user };
     },
+
+    // Add new Provider listing
+    addProvider: async (parent, args) => {
+      const provider = await Provider.create(args);
+      return provider;
+    },
+
     //Add Pet Profile to User account    
     addPet: async (parent, args) => {
       const pet = await PetProfile.create(args);
@@ -217,13 +224,13 @@ const resolvers = {
       return { token, user };
     }
   },
-  /*User: {
+  User: {
     favorites: async user => {
       console.log('user.favorites', user.favorites)
       return User.populate(user, {path: 'favorites'})
         .then(user => user.favorites)
     }
-  }*/
+  }
 };
 
 module.exports = resolvers;

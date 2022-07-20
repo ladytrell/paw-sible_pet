@@ -50,6 +50,22 @@ export const ADD_USER = gql`
   }
 `;
 
+export const ADD_PROVIDER = gql`
+  mutation addProvider($name: String, $description: String, $image: String, $category: ID, $price: Float, $availability: [String]) {
+    addProvider(name: $name, description: $description, image: $image, category: $category, price: $price, availability: $availability) {
+      _id
+      name
+      description
+      image
+      category {
+        _id
+      }
+      price
+      availability
+    }
+  }
+`;
+
 export const ADD_FAVORITE = gql`
     mutation addFavorite($id: ID!){
       addFavorite(id: $id) {
