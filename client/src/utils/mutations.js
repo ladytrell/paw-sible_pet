@@ -64,3 +64,13 @@ export const REMOVE_FAVORITE = gql`
       _id
     }
   }`;
+
+  export const ADD_PET = gql`
+  mutation addPet($name: String!, $breed: String!, $age: Float!) {
+    addPet(name: $name, breed: $breed, age: $age) {
+      _id
+      name
+      breed
+      age
+    }
+  }`;
