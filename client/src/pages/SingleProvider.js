@@ -33,18 +33,18 @@ const SingleProvider = (props) => {
         <div>
             <Link to="/">← Go Back</Link>
             <div className="card mb-3">
-                <p className="card-header">
+                <p className="card-header  provider-header">
                     <span style={{ fontWeight: 700 }} className="text-light">
                         {provider.name}
                     </span>
                 </p>
                 <div className="card-body">
+                    <img src={'/images/profile/' + provider.image} alt={`${provider.name}`} />
                     <p>{provider.description}</p>
                     <p>Rate: ${provider.price}</p>
                     <p>Category: {provider.category.name}</p>
                     <p>Availability: </p>
                     {provider.availability}
-                    <img src={'/images/profile/' + provider.image} alt={`${provider.name}`} />
                     < button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>
