@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.dad55665.chunk.css",
+    "main.js": "/static/js/main.53fe799c.chunk.js",
+    "main.js.map": "/static/js/main.53fe799c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.f7f3c275.js",
+    "runtime-main.js.map": "/static/js/runtime-main.f7f3c275.js.map",
+    "static/js/2.d6fc157a.chunk.js": "/static/js/2.d6fc157a.chunk.js",
+    "static/js/2.d6fc157a.chunk.js.map": "/static/js/2.d6fc157a.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.dad55665.chunk.css.map": "/static/css/main.dad55665.chunk.css.map",
+    "static/js/2.d6fc157a.chunk.js.LICENSE.txt": "/static/js/2.d6fc157a.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/dog-walker-takes-photos-of-dogs.499573ba.png",
+    "static/media/spinner.689d9a07.gif": "/static/media/spinner.689d9a07.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f7f3c275.js",
+    "static/js/2.d6fc157a.chunk.js",
+    "static/css/main.dad55665.chunk.css",
+    "static/js/main.53fe799c.chunk.js"
+  ]
+}

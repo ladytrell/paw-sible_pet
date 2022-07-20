@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 const SingleProvider = (props) => {
     const { id: providerId } = useParams();
-    console.log({providerId});
+    console.log({ providerId });
     const { loading, data } = useQuery(QUERY_PROVIDER, {
         variables: { id: providerId }
     });
@@ -21,7 +21,7 @@ const SingleProvider = (props) => {
             await addFavorite({
                 variables: { id: providerId }
             });
-        } catch(e) {
+        } catch (e) {
             console.error(e);
         }
     };
@@ -68,7 +68,7 @@ const SingleProvider = (props) => {
         <div>
             <Link to="/">← Go Back</Link>
             <div className="card mb-3">
-                <p className="card-header">
+                <p className="card-header  provider-header">
                     <span style={{ fontWeight: 700 }} className="text-light">
                         {provider.name}
                     </span>
