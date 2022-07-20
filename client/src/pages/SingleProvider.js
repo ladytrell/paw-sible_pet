@@ -7,7 +7,7 @@ import Auth from '../utils/auth';
 
 const SingleProvider = (props) => {
     const { id: providerId } = useParams();
-    console.log({providerId});
+    console.log({ providerId });
     const { loading, data } = useQuery(QUERY_PROVIDER, {
         variables: { id: providerId }
     });
@@ -20,7 +20,7 @@ const SingleProvider = (props) => {
             await addFavorite({
                 variables: { id: providerId }
             });
-        } catch(e) {
+        } catch (e) {
             console.error(e);
         }
     };
@@ -44,8 +44,8 @@ const SingleProvider = (props) => {
                     <p>Category: {provider.category.name}</p>
                     <p>Availability: </p>
                     {provider.availability}
-                    <img src={`/images/profile/${provider.image}`} alt={`${provider.name}`} />
-                    <button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
+                    <img src={'/images/profile/' + provider.image} alt={`${provider.name}`} />
+                    < button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>
         </div>

@@ -42,7 +42,7 @@ const ProviderList = () => {
             {/*Filtier list by category if selected*/}
             {filterProviders().map((provider) => (
                 <div key={provider._id} className="card mb-3">
-                    <p className="card-header">
+                    <p className="card-header provider-header">
                         <Link
                             to={`/provider/${provider._id}`}
                             style={{ fontWeight: 700 }}
