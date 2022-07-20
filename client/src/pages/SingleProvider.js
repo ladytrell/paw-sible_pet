@@ -44,7 +44,7 @@ const SingleProvider = (props) => {
                     <p>Category: {provider.category.name}</p>
                     <p>Availability: </p>
                     {provider.availability}
-                    <img src={'../assets/images/provider/' + provider.image} alt={`${provider.name}`} />
+                    <img src={'/images/profile/' + provider.image} alt={`${provider.name}`} />
                     < button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>
