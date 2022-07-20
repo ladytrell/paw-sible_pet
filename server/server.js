@@ -11,14 +11,14 @@ const app = express();
 
 let server = null;
 
-async function startServer () {
+async function startServer() {
   server = new ApolloServer({
     typeDefs,
     resolvers,
     context: authMiddleware
   });
   await server.start()
- server.applyMiddleware({ app });
+  server.applyMiddleware({ app });
 }
 
 startServer();
@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Serve up static assets
-app.use('/images', express.static(path.join(__dirname, '../client/images')));
+app.use('/images', express.static(path.join(__dirname, '../client/public/images')));
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
