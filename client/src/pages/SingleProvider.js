@@ -4,6 +4,9 @@ import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_PROVIDER } from "../utils/queries";
 import { ADD_FAVORITE, ADD_RESERVATION } from "../utils/mutations";
 import Auth from '../utils/auth';
+import { useStoreContext } from '../utils/GlobalState';
+import { ADD_TO_CART } from '../utils/actions';
+import Cart from '../components/Cart';
 
 const SingleProvider = (props) => {
     const { id: providerId } = useParams();
@@ -26,8 +29,12 @@ const SingleProvider = (props) => {
         }
     };
 
+    //Global state
+    const [state, dispatch] = useStoreContext();
+    const { reservations, cart } = state;
     //Set initial form state to empty
     const [formState, setFormState] = useState();
+    const [currentReservation, setReservation] = useState();
     const [addReservation, {error}] = useMutation(ADD_RESERVATION);
 
     const handleChange = (event) => {
@@ -36,6 +43,14 @@ const SingleProvider = (props) => {
           ...formState,
           [name]: value,
         });
+    };
+    
+    const addToCart = () => {                
+        dispatch({
+            type: ADD_TO_CART,
+            reservations: { ...currentReservation._id},
+        });
+       // idbPromise('cart', 'put', { ...reservation});
     };
 
     const handleAddCart = async (event) => {
@@ -47,14 +62,12 @@ const SingleProvider = (props) => {
                 provider: provider._id
             }})
             console.log(mutationResponse);
-            const reservation = mutationResponse.data.addReservation.reservation;
-            console.log(reservation);
-           /*  
-            dispatch({
-                type: ADD_TO_CART,
-                reservation: { ...reservation},
-                });
-                idbPromise('cart', 'put', { ...reservation});*/
+            const newReservation = mutationResponse.data.addReservation.reservation;
+            console.log(newReservation);
+            
+            setReservation(newReservation);
+            
+            addToCart();
         } catch(err){
             console.log(err.message);
         }
@@ -94,6 +107,7 @@ const SingleProvider = (props) => {
                     <button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>
+            <Cart />
         </div>
     );
 };

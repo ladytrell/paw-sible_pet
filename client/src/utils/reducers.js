@@ -9,7 +9,8 @@ import {
     REMOVE_FROM_CART,
     UPDATE_CART_QUANTITY,
     CLEAR_CART,
-    TOGGLE_CART  
+    TOGGLE_CART,
+    ADD_RESERVATION 
   } from "./actions";
   
 export const reducer = (state, action) => {
@@ -37,7 +38,7 @@ export const reducer = (state, action) => {
         return {
           ...state,
           cartOpen: true,
-          cart: [...state.cart, action.provider]
+          cart: [...state.cart, action.reservations]
         };
 /*      case ADD_MULTIPLE_TO_CART:
         return {
@@ -76,7 +77,6 @@ export const reducer = (state, action) => {
           ...state,
           cartOpen: !state.cartOpen
         };
-        
       default:
         return state;
     }
