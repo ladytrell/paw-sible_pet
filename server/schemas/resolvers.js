@@ -194,8 +194,7 @@ const resolvers = {
             });
           const reservation = await Reservation.create(args);
           console.log(reservation)
-          return await reservation.populate(
-            'service').populate('provider').execPopulate();
+          return await reservation.populate('provider').populate('category').execPopulate();
         } else {
           console.log("Time slot not available");
         }

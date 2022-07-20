@@ -76,7 +76,7 @@ const typeDefs = gql`
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     updateProvider(_id: ID!, availability: [ID]!): Provider
     login(email: String!, password: String!): Auth
-    addReservation(service: ID, provider: [ID]!, timeSlot: String!): Reservation
+    addReservation(provider: [ID]!, timeSlot: String!): Reservation
     removeReservation(_id: ID!): Reservation
   }
 `;

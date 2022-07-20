@@ -7,11 +7,6 @@ Provider name
 Time slot
 */
 const reservationSchema = new Schema({
-  service:
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Category'
-    },
     provider:
     {
       type: Schema.Types.ObjectId,

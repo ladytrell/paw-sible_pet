@@ -2,7 +2,7 @@ import React, { useState }  from "react";
 import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_PROVIDER } from "../utils/queries";
-import { ADD_FAVORITE } from "../utils/mutations";
+import { ADD_FAVORITE, ADD_RESERVATION } from "../utils/mutations";
 import Auth from '../utils/auth';
 
 const SingleProvider = (props) => {
@@ -28,6 +28,7 @@ const SingleProvider = (props) => {
 
     //Set initial form state to empty
     const [formState, setFormState] = useState();
+    const [addReservation, {error}] = useMutation(ADD_RESERVATION);
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -38,25 +39,25 @@ const SingleProvider = (props) => {
     };
 
     const handleAddCart = async (event) => {
-        event.preventDefault();
-       /* try {
+       event.preventDefault();
+       try {
             const mutationResponse = await addReservation({
             variables: {
                 timeSlot: formState.timeSlot,
-                service: provider.category,
-                provider: provider
+                provider: provider._id
             }})
-
-        const reservation = mutationResponse.data.addReservation.reservation;
-            
+            console.log(mutationResponse);
+            const reservation = mutationResponse.data.addReservation.reservation;
+            console.log(reservation);
+           /*  
             dispatch({
                 type: ADD_TO_CART,
                 reservation: { ...reservation},
                 });
-                idbPromise('cart', 'put', { ...reservation});
+                idbPromise('cart', 'put', { ...reservation});*/
         } catch(err){
             console.log(err.message);
-        }*/
+        }
     };
 
     if (loading) {
@@ -74,12 +75,13 @@ const SingleProvider = (props) => {
                 </p>
                 <div className="card-body">
                     
+                    <img src={`/images/profile/${provider.image}`} alt={`${provider.name}`} />
                     <p>{provider.description}</p>
                     <p>Rate: ${provider.price}</p>
                     <p>Category: {provider.category.name}</p>
                     <p>Availability: </p>
                     {/*{provider.availability}*/}
-                    <form>
+                    <form onSubmit={handleAddCart}>
                         <ul>{provider.availability.map((timeSlot, index) => (
                             <li key={index}>
                                 <input type="radio" id={index} name="timeSlot" value={timeSlot} onClick={handleChange} />
@@ -87,11 +89,8 @@ const SingleProvider = (props) => {
                             </li>
                             ))}
                         </ul>                            
-                        <button onClick={() => handleAddCart(provider._id)}>Add to Cart</button>
+                        <button type="Submit">Add to Cart</button>
                     </form>
-                    <img src={provider.image} alt={`${provider.name}`} />
-                    {provider.availability}
-                    <img src={`/images/profile/${provider.image}`} alt={`${provider.name}`} />
                     <button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
                 </div>
             </div>

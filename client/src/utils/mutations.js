@@ -68,23 +68,20 @@ export const REMOVE_FAVORITE = gql`
 export const ADD_RESERVATION = gql`
   mutation AddReservation(
     $provider: [ID]!, 
-    $timeSlot: String!, 
-    $service: ID
+    $timeSlot: String!
     ) {
     addReservation(
       provider: $provider, 
-      timeSlot: $timeSlot, 
-      service: $service
+      timeSlot: $timeSlot
       ) {
       _id
-      service {
-        _id
-        name
-      }
       provider {
         _id
         name
         price
+        category{
+          name
+        }
       }
       timeSlot
     }
