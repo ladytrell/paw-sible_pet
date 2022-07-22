@@ -2,12 +2,12 @@
 
 
 :root {
-  --primary: #E1C16E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
-  --error: rgb(228, 46, 1);
+  --primary: #fff9d0;
+  --secondary: #ffcc9f;
+  --tertiary: #ffd9da;
+  --light: #c7fcfe;
+  --dark: #baffc2;
+  --error: black;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
