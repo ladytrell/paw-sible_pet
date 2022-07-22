@@ -144,7 +144,7 @@ const resolvers = {
       return { token, user };
     },
     //Add Pet Profile to User account    
-    addPet: async (parent, args) => {
+    addPet: async (parent, args, context) => {
       const pet = await PetProfile.create(args);
       //let context= {user:{_id: "62cf6cbc7a77be4550429bce"}};
      
