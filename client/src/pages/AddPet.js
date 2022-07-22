@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_PET } from '../utils/mutations';
+
+/*
+import { useNavigate } from 'react-router-dom';  
+const navigate = useNavigate();
+navigate("/");
+ */
 
 function AddPet(props) {
   const [formState, setFormState] = useState({ name: '', breed: '', age: 1 });
@@ -20,6 +26,7 @@ function AddPet(props) {
       });
       const petData = mutationResponse.data.addPet;
       console.log(petData);
+      window.location.replace("/pets");
     } catch (err){
       console.log(err.message)
     }

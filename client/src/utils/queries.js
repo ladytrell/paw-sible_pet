@@ -144,3 +144,13 @@ export const QUERY_PROVIDERS = gql`
     }
   }
 `;
+
+export const QUERY_PETS = gql`
+  query Pets {
+    pets {
+      name
+      breed
+      age
+    }
+  }
+`;

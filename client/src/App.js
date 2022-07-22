@@ -17,6 +17,7 @@ import Favorites from './pages/Favorites';
 import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import AddPet from './pages/AddPet';
+import PetList from './components/PetList';
 import ReservationHistory from './pages/ReservationHistory';
 
 
@@ -62,6 +63,10 @@ function App() {
               <Route 
                 path="/addPet" 
                 element={<AddPet />} 
+              />
+              <Route 
+                path="/pets" 
+                element={<PetList />} 
               />
               <Route 
                 path="/providers/:id" 

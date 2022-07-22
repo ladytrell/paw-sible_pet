@@ -133,7 +133,15 @@ const resolvers = {
       });  
       
       return { session: session.id };      
-    }    
+    },
+    
+    //Add Pet Profile to User account    
+    pets: async (parent, context) => {   
+      //context = { user: {_id: '62d71fbbca9c80788ca09edb'}}  
+      const user = await User.findById(context.user._id);
+      
+      return user.pets;
+    },    
   },
   Mutation: {  
     //Add User to database
@@ -146,7 +154,7 @@ const resolvers = {
     //Add Pet Profile to User account    
     addPet: async (parent, args, context) => {
       const pet = await PetProfile.create(args);
-      //let context= {user:{_id: "62cf6cbc7a77be4550429bce"}};
+      //context= {user:{_id: "62cf6cbc7a77be4550429bce"}};
      
       await User.findByIdAndUpdate(context.user._id, { $push: { pets: pet } },  { new: true } );
       return pet;
