@@ -22,40 +22,6 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    // providers: async (parent, { category, name }) => {
-    //   const params = {};
-
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (name) {
-    //     params.name = {
-    //       $regex: name
-    //     };
-    //   }
-
-    //   return await Provider.find(params).populate('category');
-    // },
-    // provider: async (parent, { _id }) => {
-    //   return await Provider.findById(_id).populate('category');
-    // },
-    // user: async (parent, args, context) => {
-    //   if (context.user) {
-    //     const user = await User.findById(context.user._id).populate(
-    //       {
-    //         path: 'orders.providers',
-    //         populate: 'category'
-    //       }
-    //     );
-
-    //     user.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
-
-    //     return user;
-    //   }
-
-    //   // throw new AuthenticationError('Not logged in');
-    // },
     provider: async (parent, { _id }) => {
       return Provider.findById(_id)
         .populate('category');
@@ -136,9 +102,10 @@ const resolvers = {
     },
     
     //Add Pet Profile to User account    
-    pets: async (parent, context) => {   
+    pets: async (parent, args) => {   
       //context = { user: {_id: '62d71fbbca9c80788ca09edb'}}  
-      const user = await User.findById(context.user._id);
+      console.log('pets args: ', args);
+      const user = await User.findById(args);
       
       return user.pets;
     },    

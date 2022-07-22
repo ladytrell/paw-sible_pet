@@ -146,8 +146,8 @@ export const QUERY_PROVIDERS = gql`
 `;
 
 export const QUERY_PETS = gql`
-  query Pets {
-    pets {
+  query Pets ($id: ID) {
+    pets (_id: $id) {
       name
       breed
       age

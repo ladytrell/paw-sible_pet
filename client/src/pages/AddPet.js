@@ -80,6 +80,8 @@ function AddPet(props) {
           <button type="submit">Submit</button>
         </div>
       </form>
+      
+      <Link to="/pets"><h3>View Pets</h3></Link>
     </div>
   );
 }
