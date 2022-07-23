@@ -3,22 +3,27 @@ import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
 
 function Nav() {
+  const loggedIn = Auth.loggedIn();
+  const profile = Auth.getProfile();
 
   function showNavigation() {
-    if (Auth.loggedIn()) {
+    if (loggedIn) {
       return (
         <ul className="flex-row">
-          <li className="mx-1">
+          <li className="mx-1 toplinks">
             <Link to="/orderHistory">
               Order History
             </Link>
+            <Link to={`/favorites/${profile.data._id}`}>
+              Favorites
+            </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1  toplinks">
             <Link to="/addlisting">
               Add New Listing
             </Link>
           </li>
-          <li className="mx-1">
+          <li className="mx-1 toplinks">
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
             <a href="/" onClick={() => Auth.logout()}>
               Logout

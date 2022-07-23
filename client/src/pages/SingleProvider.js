@@ -45,7 +45,7 @@ const SingleProvider = (props) => {
                     <p>Category: {provider.category.name}</p>
                     <p>Availability: </p>
                     {provider.availability}
-                    < button onClick={() => handleAddFavorite(provider._id)}>Add to favorite</button>
+                    < button onClick={() => handleAddFavorite(provider._id)}>Add to Favorites</button>
                 </div>
             </div>
         </div>

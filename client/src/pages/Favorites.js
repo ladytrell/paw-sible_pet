@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 import { REMOVE_FAVORITE } from '../utils/mutations';
 import Auth from '../utils/auth';
-import ProviderList from '../components/ProviderList';
+import FavoritesList from '../components/FavoritesList';
 
 const Favorites = (props) => {
     const { id: userParam } = useParams();
@@ -33,6 +33,8 @@ const Favorites = (props) => {
     const loggedIn = Auth.loggedIn()
     const profile = Auth.getProfile();
 
+
+    console.log(profile.data._id);
     if(!loggedIn || profile.data._id !== userParam) {
         return (
             <h4>
@@ -52,7 +54,7 @@ const Favorites = (props) => {
                 <h2>{userParam ? `${user.firstName}'s` : 'your'} Favorites</h2>
             </div>
             <div>
-                <ProviderList
+                <FavoritesList
                     providers={user.favorites}
                 />
             </div>
