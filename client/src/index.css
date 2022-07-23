@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
 
 
 :root {
-  --primary: #E1C16E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
-  --light: #fafafa;
-  --dark: #272f32;
-  --error: rgb(228, 46, 1);
+  --primary: #fff9d0;
+  --secondary: #ffcc9f;
+  --tertiary: #ffd9da;
+  --light: #c7fcfe;
+  --dark: #baffc2;
+  --error: black;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
 }
@@ -24,7 +27,7 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Karla', sans-serif;
+  font-family: 'Edu VIC WA NT Beginner', cursive;
   font-weight: 400;
   line-height: 1.5;
   font-size: 16px;
@@ -41,7 +44,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Rubik', sans-serif;
+  font-family: 'Mochiy Pop One', sans-serif;
   font-weight: 500;
   margin: 5px 0;
   line-height: 1.25;
@@ -91,7 +94,7 @@ header {
 }
 
 header a {
-  color: rgb(228, 46, 1);
+  color: var(--error);
 }
 
 .header {
@@ -100,7 +103,7 @@ header a {
 }
 
 .header>h1>a:hover {
-  color: rgb(228, 46, 1)
+  color: var(--tertiary)
 }
 
 .header>h1 {
@@ -242,7 +245,7 @@ input:focus {
 .login,
 .banner,
 .category {
-  background-color: white;
+  background-color: var(--secondary);
   opacity: 0.6;
   padding: 10px;
 }
@@ -262,7 +265,7 @@ input:focus {
     left: 0px;
     width: 500px;
     top: 50%;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Mochiy Pop One', sans-serif !important;
   }
 }
 
@@ -280,12 +283,12 @@ input:focus {
     left: 0px;
     width: 100%;
     top: 20%;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'Mochiy Pop One', sans-serif !important;
   }
 
   .toplinks>a {
     color: black;
-    background-color: white;
+    background-color: var(--tertiary);
     border-style: solid;
     padding: 5px;
     border-radius: 5px;
@@ -293,7 +296,7 @@ input:focus {
 }
 
 .banner>h3 {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: 'Mochiy Pop One', sans-serif !important;
 }
 
 .provider-card {
@@ -305,7 +308,7 @@ input:focus {
 }
 
 .card {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .font-weight-bolder {
