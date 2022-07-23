@@ -217,13 +217,13 @@ const resolvers = {
       return { token, user };
     }
   },
-  /*User: {
+  User: {
     favorites: async user => {
       console.log('user.favorites', user.favorites)
       return User.populate(user, {path: 'favorites'})
         .then(user => user.favorites)
     }
-  }*/
+  }
 };
 
 module.exports = resolvers;
