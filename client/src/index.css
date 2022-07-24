@@ -315,3 +315,7 @@ input:focus {
 .font-weight-bolder {
   font-weight: bolder;
 }
+
+.error {
+  background: var(--primary);
+}

@@ -13,7 +13,7 @@ function PetList() {
 
     console.log('profile.data',profile.data._id);
     const { loading, error, data } = useQuery(QUERY_PETS, {
-        variables: { _id: profile.data._id }
+        variables: { id: profile.data._id }
     });
 
     if(!loggedIn){
@@ -40,7 +40,13 @@ function PetList() {
     }, [data, loading]);
     */
     if (loading) return 'Loading...';
-    if (error) return `Error! ${error.message}`;
+    if (error)
+    {
+        return (
+        <div className="container my-1 error">
+            <p>{error.message}</p>
+        </div>
+    )}
 
     console.log(data);
     const pets = data.pets;
@@ -48,19 +54,21 @@ function PetList() {
 
     return (
         <div className="my-2">
-            <h2>Our Pets:</h2>
+            <h2>Your Pets:</h2>                            
+            <Link to="/addPet"><h3>Add Pets</h3></Link>
+            
             {pets.length ? (
-            <div className="flex-row">
-                {pets().map((pet) => (
-                    <div>
-                        <p>{pet.name}</p>
-                        <p> {pet.breed}</p>
-                        <p>{pet.mage}</p>
-                    </div>
-                ))}
-            </div>
+                <div className="flex-row">
+                    {pets.map((pet) => (
+                        <div className="card mb-3">
+                            <p className="card-header provider-header">{pet.name}</p>
+                            <p> {pet.breed}</p>
+                            <p>{pet.age}</p>
+                        </div>
+                    ))}
+                </div>
             ) : (
-            <h3>You haven't added any pets yet!</h3>
+                <h3>You haven't added any pets yet!</h3>
             )}
             {loading ? <img src={spinner} alt="loading" /> : null}
         </div>

@@ -65,6 +65,7 @@ const typeDefs = gql`
     addFavorite(id: ID!): User
     deleteFavorite(id: ID!): User
     addPet(name: String!, breed: String!, age: Float!): PetProfile
+    delPet(_id: ID!): User
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     addOrder(providers: [ID]!): Order
     updateUser(firstName: String, lastName: String, email: String, password: String): User

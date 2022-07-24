@@ -17,7 +17,6 @@ import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import AddPet from './pages/AddPet';
 import PetList from './components/PetList';
-import ReservationHistory from './pages/ReservationHistory';
 
 
 const httpLink = createHttpLink({

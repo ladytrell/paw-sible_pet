@@ -103,7 +103,7 @@ const resolvers = {
     
     //Add Pet Profile to User account    
     pets: async (parent, args) => {   
-      //context = { user: {_id: '62d71fbbca9c80788ca09edb'}}  
+      //args = { _id: '62d71fbbca9c80788ca09edb'}  
       console.log('pets args: ', args);
       const user = await User.findById(args);
       
@@ -198,7 +198,19 @@ const resolvers = {
       return User.populate(user, {path: 'favorites'})
         .then(user => user.favorites)
     }
-  }*/
+  },*/
+   /* //Delete Pet Profile to User account    
+    delPet: async (parent, { _id }, context) => {
+      console.log('delPet context', context);
+      console.log('delPet _id: ', _id);
+      //const user = await User.findById(args);     
+      //context= {user:{_id: "62cf6cbc7a77be4550429bce"}}
+      const pet = await PetProfile.findByIdAndDelete(_id);
+      const user = await User.findByIdAndUpdate(
+        { _id: context.user._id }, { $pull: { pets: pet }},  { new: true } );
+
+      return user;
+    }*/
 };
 
 module.exports = resolvers;
