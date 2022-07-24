@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <div className="container">
       <CategoryMenu />
-      <Cart />
       <ProviderList />
     </div>
   );
