@@ -12,7 +12,7 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-import Favorites from './pages/Favorites';
+// import FavoritesList from './components/FavoritesList';
 import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import AddPet from './pages/AddPet';
@@ -70,10 +70,10 @@ function App() {
                 path="/provider/:id" 
                 element={<SingleProvider />}
               />
-              <Route 
-                path="/favorites/:id" 
-                element={<Favorites />}
-              />
+              {/* <Route 
+                path="/favorites" 
+                element={<FavoritesList />}
+              /> */}
             </Routes>
           </StoreProvider>
         </div>
