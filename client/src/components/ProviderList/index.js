@@ -53,7 +53,7 @@ const ProviderList = () => {
                     </p>
                     <div className="card-body provider-card">
                         <p><span className="font-weight-bolder">Rate: </span>${provider.price}</p>
-                        <p><span className="font-weight-bolder">Category: </span>{provider.category.name}</p>
+                        {/* <p><span className="font-weight-bolder">Category: </span>{provider.category.name}</p> */}
                         <p><span className="font-weight-bolder">Availability:</span></p>
                         <ul>{provider.availability.map((day, key) => {
                             return <li key={key}>{day}</li>
