@@ -74,3 +74,19 @@ export const REMOVE_FAVORITE = gql`
       age
     }
   }`;
+
+  export const ADD_PROVIDER = gql`
+  mutation addProvider($name: String, $description: String, $image: String, $category: ID, $price: Float, $availability: [String]) {
+    addProvider(name: $name, description: $description, image: $image, category: $category, price: $price, availability: $availability) {
+      _id
+      name
+      description
+      image
+      category {
+        _id
+      }
+      price
+      availability
+    }
+  }
+`;

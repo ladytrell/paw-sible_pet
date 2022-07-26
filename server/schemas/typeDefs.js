@@ -62,6 +62,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
+    addProvider(name: String, description: String, image: String, category: ID, price: Float, availability: [String]): Provider
     addFavorite(id: ID!): User
     deleteFavorite(id: ID!): User
     addPet(name: String!, breed: String!, age: Float!): PetProfile

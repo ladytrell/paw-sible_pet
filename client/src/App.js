@@ -17,6 +17,7 @@ import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import AddPet from './pages/AddPet';
 import PetList from './components/PetList';
+import ProviderForm from './pages/ProviderForm';
 
 
 const httpLink = createHttpLink({
@@ -73,6 +74,10 @@ function App() {
               <Route 
                 path="/favorites/:id" 
                 element={<Favorites />}
+              />
+              <Route
+                path="/addlisting"
+                element={<ProviderForm />}
               />
             </Routes>
           </StoreProvider>
