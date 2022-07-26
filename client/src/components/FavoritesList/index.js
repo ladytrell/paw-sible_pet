@@ -2,20 +2,16 @@ import React from 'react';
 import Auth from '../../utils/auth';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client'
-import { QUERY_FAVORITES, QUERY_USER } from '../../utils/queries';
+import { QUERY_USER } from '../../utils/queries';
 
 function FavoritesList() {
-
-    const loggedIn = Auth.loggedIn();
     const profile = Auth.getProfile();
 
-    const { loading, error, data } = useQuery(QUERY_USER, {
+    const { data } = useQuery(QUERY_USER, {
         variables: { _id: profile.data._id }
     });
 
     const favs = data?.user.favorites || {};
-
-    console.log('favs',favs);
 
     if (!favs.length) {
         return (
