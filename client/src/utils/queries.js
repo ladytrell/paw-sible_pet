@@ -25,7 +25,7 @@ export const QUERY_CATEGORIES = gql`
 `;
 
 export const QUERY_USER = gql`
-  query getUser($_id: ID!){
+  query user($_id: ID!){
     user(_id: $_id) {
       _id
       firstName
@@ -154,3 +154,11 @@ export const QUERY_PETS = gql`
     }
   }
 `;
+
+export const QUERY_FAVORITES = gql`
+  query Favorites ($id: ID) {
+    favorites (_id: $id) {
+      _id
+    }
+  }
+`

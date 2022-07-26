@@ -108,7 +108,13 @@ const resolvers = {
       const user = await User.findById(args);
       
       return user.pets;
-    },    
+    },  
+    
+    favorites: async (parent, args) => {
+      const user = await User.findById(args);
+      
+      return user.favorites;
+    },
   },
   Mutation: {  
     //Add User to database
@@ -192,13 +198,13 @@ const resolvers = {
       return { token, user };
     }
   },
-  /*User: {
+  User: {
     favorites: async user => {
       console.log('user.favorites', user.favorites)
       return User.populate(user, {path: 'favorites'})
         .then(user => user.favorites)
     }
-  },*/
+  },
    /* //Delete Pet Profile to User account    
     delPet: async (parent, { _id }, context) => {
       console.log('delPet context', context);

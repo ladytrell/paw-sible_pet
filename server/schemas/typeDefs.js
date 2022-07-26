@@ -59,6 +59,7 @@ const typeDefs = gql`
     order(_id: ID!): Order
     checkout(providers: [ID]!): Checkout 
     pets(_id: ID): [PetProfile]
+    favorites(_id: ID): [User]
   }
 
   type Mutation {

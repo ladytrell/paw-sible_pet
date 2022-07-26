@@ -12,12 +12,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Nav from './components/Nav';
-// import FavoritesList from './components/FavoritesList';
+import FavoritesList from './components/FavoritesList';
 import SingleProvider from './pages/SingleProvider';
 import { StoreProvider } from "./utils/GlobalState";
 import AddPet from './pages/AddPet';
 import PetList from './components/PetList';
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -70,10 +69,10 @@ function App() {
                 path="/provider/:id" 
                 element={<SingleProvider />}
               />
-              {/* <Route 
+              <Route 
                 path="/favorites" 
                 element={<FavoritesList />}
-              /> */}
+              />
             </Routes>
           </StoreProvider>
         </div>
